@@ -1,0 +1,240 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+.notificationfix{
+  position: fixed;
+top: 10px;
+right: 10px;
+z-index: 1;
+}
+.linkDelete{
+  cursor: pointer;
+    font-weight: 600;
+    color: #FFC107;
+}
+.recharts-wrapper,
+.recharts-surface{
+  width: 100% !important;
+}
+.logo_grupos{
+      max-width: 50px;
+}
+.searchInput{
+      width: 28%;
+    float: right;
+}
+.eliminar_button{
+    border: 1px solid black;
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+    cursor: pointer;
+}
+.eliminar_button:hover{
+   transition:0.5s background;
+   background: #cacaca
+}
+.App-title {
+  font-size: 1.5em;
+}
+.block{
+  display: block
+}
+.none{
+  display: none
+}
+.red{
+  color: red
+}
+.App-intro {
+  font-size: large;
+}
+.marginT{
+  margin-top: 2em;
+}
+.right{
+  text-align: right
+}
+.center_full{
+      align-items: center;
+  justify-content: center;
+}
+.contenido_general .Contenido_general{
+  border-left: 1px solid;
+  border-right: 1px solid;
+      min-height: 89.7vh;
+}
+.form_margin{
+     margin-top: 6.0em;
+}
+.center{
+  text-align: center;
+      justify-content: center;
+}
+.header_participants{
+  border:1px solid;
+  padding:1em;
+}
+.form-control {
+
+    border: 1px solid #000000;
+
+}
+.text_group{
+      display: inline-block;
+    width: 100%;
+    margin-left: 1em;
+}
+.text_group::-webkit-inner-spin-button,
+.text_group::-webkit-outer-spin-button{
+     -webkit-appearance: none;
+  margin: 0;
+}
+button a{
+ color: white;
+}
+button a:hover{
+ color: white;
+ text-decoration: none
+}
+.participants_list li{
+  list-style: none;
+  margin:0;
+}
+.participants_list{
+  padding-left: 0;
+}
+/*TABLES*/
+.griddle-table{
+  width: 100%;
+  margin-top: 2em
+}
+.griddle-cell,
+.griddle-table-heading-cell{
+  text-align: center;
+}
+/*ENDTABLES*/
+/*LOGIN*/
+.background_login{
+      background: black;
+    height: 100vh;
+}
+
+/*END LOGIN*/
+/*DOCUMENTS*/
+.documents img{
+  width: 100%;
+}
+.develops{
+      max-height: 200px;
+    overflow-y: auto;
+}
+/*END DOCUMENTS*/
+/*CHALLENGE*/
+.last_challenge{
+  text-align: justify;
+}
+/*END CHALLEGE*/
+/*CONTENIDO*/
+.subtitulo{}
+.titulo{}
+h5{}
+.margin_container{
+    padding: 15px;
+        width: 100%;
+            margin: 0 auto;
+}
+.margin_container form{
+  width: 100%;
+}
+/*END CONTENIDO*/
+/*NAV*/
+.nav_cont{
+    height: 100vh;
+    width: 100vh;
+  border-right:1px solid;
+  position: fixed;
+      background: #f8f9fa;
+  z-index: 1
+}
+.navbar-expand-md .navbar-nav {
+    -ms-flex-direction: row;
+    flex-direction: column;
+}
+.navbar-collapse {
+    flex-grow: 0;
+}
+.logo img{
+         width: 100%;
+}
+.navbar-expand-md .navbar-nav .dropdown-menu {
+    position: relative;
+}
+.navbar-nav,
+.navbar-collapse{
+  width: 100%;
+}
+.dropdown-item a,
+.navbar-light .navbar-nav .nav-link a{
+    color: rgba(0,0,0,.5);
+}
+.dropdown-item a:hover,
+.navbar-light .navbar-nav .nav-link a:focus, .navbar-light .navbar-nav .nav-link a:hover {
+    color: rgba(0,0,0,.7);
+    text-decoration: none;
+}
+.recharts-default-legend{
+  display: none
+}
+/*END NAV*/
+
+/*Footer*/
+
+footer{
+  border-top: 1px solid;
+  min-height: 100px;
+     background: #222222;
+}
+/*end footer*/
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+/*MEDIAS*/
+
+@media (max-width: 600px) {
+  .nav_cont{
+      height: auto;
+      border-bottom: 1px solid;
+}
+.logo{
+  display: none;
+}
+.line{
+  display: none;
+}
+}
+
+@media (max-width: 765px) {
+  .nav_cont{
+      height: auto;
+      border-bottom: 1px solid;
+}
+.logo{
+  display: none;
+}
+}
