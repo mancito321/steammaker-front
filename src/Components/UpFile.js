@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router'
 import { Container, Row, Col,Button, FormGroup, Input , Label,FormText,Form } from "reactstrap";
 import Dropzone from 'react-dropzone'
+import {apiTesxt} from './apiConf'
 const axios = require('axios');
 
 class UpFile extends Component{
@@ -37,7 +38,7 @@ class UpFile extends Component{
             'content-type': 'multipart/form-data'
         }
     }
-    axios.post('http://api-sm.cid.edu.co/api/auth/newfiletest', formData,config)
+    axios.post(apiTesxt+'/api/auth/newfiletest', formData,config)
     .then( (response) =>{
 
       console.log(response);

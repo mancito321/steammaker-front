@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import Grupos from './Grupo'
 import Filter from './Filter'
+import {apiTesxt} from './apiConf'
 
 import { ChallengeCon } from './ChallengeContext';
 import Griddle, { plugins, RowDefinition, ColumnDefinition,Components} from 'griddle-react';
@@ -42,7 +43,7 @@ class Group extends Component {
     const sessionchk =sessionStorage.getItem('mySteamM')===null;
     this.state = {
       session:sessionchk,
-      group : [],      
+      group : [],
       detail:"0"
     };
   }
@@ -54,7 +55,7 @@ class Group extends Component {
     })
   }
   componentDidMount(){
-    axios.get('http://api-sm.cid.edu.co/group/group')
+    axios.get(apiTesxt+'/group/group')
    .then((response)=>  {
       this.setState({
        group: response.data
@@ -67,7 +68,7 @@ class Group extends Component {
 
     // always executed
      });
-  
+
     }
     componentWillReceiveProps(nextProps){
   if (nextProps.location.state === 'edita') {

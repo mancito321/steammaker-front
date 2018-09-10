@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { Route, Redirect } from 'react-router'
 import { Container, Row, Col,Button, FormGroup, Input , Label } from "reactstrap";
+import {apiTesxt} from './apiConf'
 const axios = require('axios');
 class Documents extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class Documents extends Component {
     };
   }
   componentDidMount(){
-    axios.get('http://api-sm.cid.edu.co/challenge/challenge/develops',{
+    axios.get(apiTesxt+'/challenge/challenge/develops',{
       params:{
         id: this.props.id
       }

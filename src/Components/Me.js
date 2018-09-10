@@ -4,6 +4,7 @@ import '../App.css';
 import { Route, Redirect } from 'react-router'
 import { Container, Row, Col,Button, FormGroup, Input , Label } from "reactstrap";
 import Nav from './Nav'
+import {apiTesxt} from './apiConf'
 import Footer from './Footer'
   const axios = require('axios');
 class Me extends Component {
@@ -16,7 +17,7 @@ class Me extends Component {
     };
   }
   componentDidMount(){
-    axios.get('api-sm.cid.edu.co/users/user/all')
+    axios.get(apiTesxt+'/users/user/all')
    .then((response)=>  {
       this.setState({
        user: response.data
@@ -31,7 +32,7 @@ class Me extends Component {
   }
   testToken = ()=>{
     let session=JSON.parse(sessionStorage.getItem('mySteamM'))
-    axios.get('api-sm.cid.edu.co/api/auth/me',{
+    axios.get(apiTesxt+'/api/auth/me',{
       headers: {
           'content-type': 'multipart/form-data',
           'x-access-token':session.token

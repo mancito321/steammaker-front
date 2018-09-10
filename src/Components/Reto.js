@@ -12,6 +12,7 @@ import Challenge from './ChallengeGroup'
 import Desarrollo from './DesarrolloGrupo'
 import NuevoDesarrollo from './NuevoDesarrollo'
 import Grupos from './Grupo'
+import {apiTesxt} from './apiConf'
 import Cha from './ChallengeDetail'
 import { ChallengeCon } from './ChallengeContext';
 const axios = require('axios');
@@ -59,7 +60,7 @@ class Reto extends Component {
 
   }
   componentDidMount(){
-    axios.get('http://api-sm.cid.edu.co/group/detail',{
+    axios.get(apiTesxt+'/group/detail',{
       params:{
         id: this.props.id
       }
@@ -78,7 +79,7 @@ class Reto extends Component {
 
 
 
-     axios.get('http://api-sm.cid.edu.co/group/participants',{
+     axios.get(apiTesxt+'/group/participants',{
       params:{
         id: this.props.id
       }
@@ -102,7 +103,7 @@ class Reto extends Component {
     // always executed
 
      });
-     axios.get('http://api-sm.cid.edu.co/challenge/desarrollo',{
+     axios.get(apiTesxt+'/challenge/desarrollo',{
       params:{
         id: this.props.id
       }
@@ -120,7 +121,7 @@ class Reto extends Component {
 
     // always executed
      });
-     axios.get('http://api-sm.cid.edu.co/challenge/boton',{
+     axios.get(apiTesxt+'/challenge/boton',{
        params:{
          id_challenge:this.props.id,
          id_grupo:this.props.grupo

@@ -1,3 +1,4 @@
+import {apiTesxt} from './apiConf'
 import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router'
 import { Container, Row, Col,Button, FormGroup, Input , Label,FormText,Alert,Tooltip  } from "reactstrap";
@@ -71,11 +72,11 @@ class NuevoGrupo extends Component {
       console.log('no similar')
      this.setState({
       error: true
-     });     
+     });
     }
-    });  
+    });
 
-    axios.get('http://api-sm.cid.edu.co/group/franchises',{
+    axios.get(apiTesxt+'/group/franchises',{
       params:{
         id: this.state.ie
       }
@@ -91,7 +92,7 @@ class NuevoGrupo extends Component {
     .then(()=> {
       // always executed
     });
-     axios.get('http://api-sm.cid.edu.co/group/busy',{
+     axios.get(apiTesxt+'/group/busy',{
       params:{
         tabla: 'group',
         campo: 'name',
@@ -108,7 +109,7 @@ class NuevoGrupo extends Component {
         nameVal: false
       });
      }
-      
+
     })
     .catch((error)=>  {
       // handle error
@@ -124,7 +125,7 @@ class NuevoGrupo extends Component {
 
   componentDidMount(){
 
-    axios.get('http://api-sm.cid.edu.co/group/institution')
+    axios.get(apiTesxt+'/group/institution')
     .then((response)=>  {
       this.setState({
         institutions: response.data
@@ -136,10 +137,10 @@ class NuevoGrupo extends Component {
     .then(()=> {
     });
 
-     
+
 
   }
- componentDidUpdate(){ 
+ componentDidUpdate(){
   console.log(this.state.participantes)
 
  }
@@ -175,7 +176,7 @@ class NuevoGrupo extends Component {
       }
     }
     console.log(config);
-    axios.post('http://api-sm.cid.edu.co/api/auth/newgroup', formData,config)
+    axios.post(apiTesxt+'/api/auth/newgroup', formData,config)
     .then( (response) =>{
       console.log(response);
       this.setState({
@@ -294,7 +295,7 @@ class NuevoGrupo extends Component {
                                   <Input  type="text" id="name"  onChange={this.handleChange.bind(this)} />
                                     <Alert color="danger" isOpen={this.state.error}>
                                     El nombre del grupo ya existe!
-                                  </Alert>   
+                                  </Alert>
                                 </FormGroup>
                               </Col>
                             </Row>
@@ -396,7 +397,7 @@ class NuevoGrupo extends Component {
                                   <FormText color="muted">
                                    <Alert color="danger" isOpen={this.state.error}>
                                     Las contraseñas no coiciden!
-                                  </Alert>                               
+                                  </Alert>
                                   </FormText>
                                 </FormGroup>
                               </Col>
@@ -408,7 +409,7 @@ class NuevoGrupo extends Component {
                                 <Button block disabled={!this.validateForm()} type="submit" >
                                   Crear
                                 </Button>
-                              </Col>                             
+                              </Col>
 
                             </Row>
                           </Container>

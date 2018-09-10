@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {apiTesxt} from './apiConf'
 const axios = require('axios');
 
 class ShowDoc extends Component{
@@ -13,7 +14,7 @@ componentDidMount (){
 
 }
   componentWillMount(){
-    axios.get('http://api-sm.cid.edu.co/api/auth/filesSol',{
+    axios.get(apiTesxt+'/api/auth/filesSol',{
       params: {
       id: this.props.id,
       group:this.props.group

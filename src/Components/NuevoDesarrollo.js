@@ -17,6 +17,7 @@ import Footer from './Footer'
 import Documents from './Documents'
 import Develops from './Develops'
 import DropIt from './DropIt'
+import {apiTesxt} from './apiConf'
 import ShowDoc from './ShowDoc'
 const axios = require('axios');
 
@@ -44,7 +45,7 @@ class NuevoDesarrollo extends Component {
   }
 componentWillMount(){
   console.log('will mount');
-  axios.get('http://api-sm.cid.edu.co/api/auth/resources',{
+  axios.get(apiTesxt+'/api/auth/resources',{
     params: {
     id: this.state.id  }
   })
@@ -65,7 +66,7 @@ componentWillMount(){
     // always executed
     console.log('challenge_ok');
   });
-  axios.get('http://api-sm.cid.edu.co/challenge/actual',{
+  axios.get(apiTesxt+'/challenge/actual',{
     params:{
       id:this.props.id
     }
@@ -116,7 +117,7 @@ componentWillMount(){
         }
     }
     console.log(config);
-    axios.post('http://api-sm.cid.edu.co/api/auth/solucionreto', formData,config)
+    axios.post(apiTesxt+'/api/auth/solucionreto', formData,config)
     .then( (response) =>{
       document.getElementById('solutionFile').value = null;
       this.setState({

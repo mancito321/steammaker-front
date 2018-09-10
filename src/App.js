@@ -12,6 +12,7 @@ import NuevoReto from './Components/NuevoReto';
 import NuevoDesarrollo from './Components/NuevoDesarrollo';
 import UpFile from './Components/UpFile';
 import {ChallengePro} from './Components/ChallengeContext';
+import {apiTesxt} from './Components/apiConf'
 import './App.css'
 const axios = require('axios');
 
@@ -29,7 +30,7 @@ class App extends Component {
   console.log(session);
   if (session!=null && this.state.permission==0) {
 
-        axios.get('http://api-sm.cid.edu.co/api/auth/me',{
+        axios.get(apiTesxt+'/api/auth/me',{
           headers: {
               'content-type': 'multipart/form-data',
               'x-access-token':session.token
@@ -61,7 +62,7 @@ class App extends Component {
         onAction:1
       })
       console.log('entra ??');
-          axios.get('http://api-sm.cid.edu.co/api/auth/me',{
+          axios.get(apiTesxt+'/api/auth/me',{
             headers: {
                 'content-type': 'multipart/form-data',
                 'x-access-token':session.token
@@ -95,7 +96,7 @@ class App extends Component {
     console.log('My session');
     console.log(session);
     if (session!=null && this.state.permission==0) {
-          axios.get('http://api-sm.cid.edu.co/api/auth/me',{
+          axios.get(apiTesxt+'/api/auth/me',{
             headers: {
                 'content-type': 'multipart/form-data',
                 'x-access-token':session.token
@@ -131,7 +132,7 @@ class App extends Component {
             actions:{
               update:()=>{if (this.state.permission==0) {
                      let session=JSON.parse(sessionStorage.getItem('mySteamM'))
-                     axios.get('http://api-sm.cid.edu.co/api/auth/me',{
+                     axios.get(apiTesxt+'/api/auth/me',{
                        headers: {
                            'content-type': 'multipart/form-data',
                            'x-access-token':session.token

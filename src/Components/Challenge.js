@@ -5,6 +5,7 @@ import Nav from './Nav'
 import Footer from './Footer'
 import Documents from './Documents'
 import Develops from './Develops'
+import {apiTesxt} from './apiConf'
 import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, LabelList, Legend} from 'recharts';
 import { ChallengeCon } from './ChallengeContext';
   const axios = require('axios');
@@ -23,7 +24,7 @@ class Challenge extends Component {
     };
   }
   componentDidMount(){
-    axios.get('http://api-sm.cid.edu.co/challenge/challenge/last')
+    axios.get(apiTesxt+'/challenge/challenge/last')
    .then((response)=>  {
      console.log('the challenge:');
      console.log(response);

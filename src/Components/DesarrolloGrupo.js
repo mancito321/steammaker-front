@@ -6,6 +6,7 @@ import Footer from './Footer'
 import Cha from './ChallengeGroup'
 import DesarrolloDetail from './DesarrolloDetail'
 import { ChallengeCon } from './ChallengeContext';
+import {apiTesxt} from './apiConf'
 import { RadarChart,PolarGrid,PolarAngleAxis,PolarRadiusAxis,Radar,Legend} from 'recharts';
 
   const axios = require('axios');
@@ -54,7 +55,7 @@ class Challenge extends Component {
     return this.state.valor1e.length == 0 && this.state.valor2e.length == 0 && this.state.valor3e.length == 0 && this.state.valor4e.length == 0 && this.state.valor5e.length == 0 ;
   }
   componentDidMount(){
-    axios.get('http://api-sm.cid.edu.co/group/challengedeep',{
+    axios.get(apiTesxt+'/group/challengedeep',{
       params:{
         id:this.props.id,
         group:this.props.group
@@ -167,7 +168,7 @@ class Challenge extends Component {
 
 handleButtonChange(event){
 
-  axios.post('http://api-sm.cid.edu.co/challenge/punctuation',{
+  axios.post(apiTesxt+'/challenge/punctuation',{
         id:this.props.id,
         punctuation:this.state.punctuation,
         punctuationT:this.state.punctuation+this.props.punctuation,

@@ -10,6 +10,7 @@ import Documents from './Documents'
 import Develops from './Develops'
 import Challenge from './ChallengeGroup'
 import Desarrollo from './DesarrolloGrupo'
+import {apiTesxt} from './apiConf'
 const axios = require('axios');
 const rowDataSelector = (state, { griddleKey }) => {
   return state
@@ -51,7 +52,7 @@ class Grupo extends Component {
 
   }
   componentDidMount(){
-    axios.get('http://api-sm.cid.edu.co/group/detail',{
+    axios.get(apiTesxt+'/group/detail',{
       params:{
         id: this.props.id
       }
@@ -68,7 +69,7 @@ class Grupo extends Component {
     // always executed
      });
 
-     axios.get('http://api-sm.cid.edu.co/group/participants',{
+     axios.get(apiTesxt+'/group/participants',{
       params:{
         id: this.props.id
       }
@@ -92,7 +93,7 @@ class Grupo extends Component {
     // always executed
 
      });
-     axios.get('http://api-sm.cid.edu.co/group/challenge',{
+     axios.get(apiTesxt+'/group/challenge',{
       params:{
         id: this.props.id
       }

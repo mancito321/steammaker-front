@@ -6,6 +6,7 @@ import Footer from './Footer'
 import Documents from './Documents'
 import Develops from './Develops'
 import ShowSol from './ShowSol'
+import {apiTesxt} from './apiConf'
   const axios = require('axios');
 class DesarrolloDetail extends Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class DesarrolloDetail extends Component {
     };
   }
   componentDidMount(){
-    axios.get('http://api-sm.cid.edu.co/challenge/desarrollo',{
+    axios.get(apiTesxt+'/challenge/desarrollo',{
       params:{
         id:this.props.id,
         group:this.props.group

@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import { Container, Row, Col,Button, FormGroup, Input , Label } from "reactstrap";
 import '../App.css';
+import {apiTesxt} from './apiConf'
 import { Route, Redirect } from 'react-router'
 const axios = require('axios');
 
@@ -27,7 +28,7 @@ class Log extends Component {
   }
 
   handleSubmit = event => {
-    axios.post('http://api-sm.cid.edu.co/api/auth/register', {
+    axios.post(apiTesxt+'/api/auth/register', {
       user: this.state.text,
       rol: this.state.number,
       email: this.state.email,

@@ -18,6 +18,7 @@ import Footer from './Footer'
 import Documents from './Documents'
 import Develops from './Develops'
 import DropIt from './DropIt'
+import {apiTesxt} from './apiConf'
 const axios = require('axios');
 
 class NuevoReto extends Component {
@@ -86,7 +87,7 @@ class NuevoReto extends Component {
         }
     }
     console.log(config);
-    axios.post('http://api-sm.cid.edu.co/api/auth/newreto', formData,config)
+    axios.post(apiTesxt+'/api/auth/newreto', formData,config)
     .then( (response) =>{
       console.log(response);
       this.setState({ successM: true });
@@ -279,7 +280,7 @@ class NuevoReto extends Component {
                                   <Button block disabled={!this.validateForm()} type="submit">
                                     Crear
                                   </Button>
-                                </Col>                                
+                                </Col>
                               </Row>
                             </Container>
                           </form>

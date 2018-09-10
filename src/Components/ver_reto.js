@@ -5,6 +5,7 @@ import Nav from './Nav'
 import Footer from './Footer'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
+import {apiTesxt} from './apiConf'
 
 import { ChallengeCon } from './ChallengeContext';
 import Reto from './Reto'
@@ -56,7 +57,7 @@ class Retos extends Component {
     };
   }
     componentDidMount(){
-    axios.get('http://api-sm.cid.edu.co/challenge/challenges')
+    axios.get(apiTesxt+'/challenge/challenges')
    .then((response)=>  {
       this.setState({
        retos: response.data
@@ -69,7 +70,7 @@ class Retos extends Component {
      .then(()=> {
       console.log(this.state.retos)
     // always executed
-     });  
+     });
   }
    componentWillReceiveProps(nextProps){
   if (nextProps.location.state === 'edita') {
@@ -79,7 +80,7 @@ class Retos extends Component {
    }
   }
   updateActive(){
-    axios.post('http://api-sm.cid.edu.co/challenge/active/edit',{
+    axios.post(apiTesxt+'/challenge/active/edit',{
       id:this.state.edit,
       active:this.state.active
     })
@@ -97,7 +98,7 @@ class Retos extends Component {
   }
 
     updateActiveA(){
-    axios.post('http://api-sm.cid.edu.co/challenge/active/edit',{
+    axios.post(apiTesxt+'/challenge/active/edit',{
       id:this.state.edit,
       active:this.state.activeA
     })
@@ -148,7 +149,7 @@ class Retos extends Component {
 
 
   render() {
-     
+
     let GridFixMt=(<Griddle components={{Layout: NewLayout}} data={this.state.retos} plugins={[plugins.LocalPlugin]}>
    <RowDefinition>
      <ColumnDefinition id="logo" title="Logo" customComponent={enhancedWithRowData(id)} />
@@ -248,7 +249,7 @@ class Retos extends Component {
                 <p>Aún no existen retos ¿Has pensado en crear uno?</p>
                 )
             }
-            
+
           }else if (context.state==2) {
              if(this.state.challenge != undefined){
               return(
@@ -258,7 +259,7 @@ class Retos extends Component {
               return(
                 <p>Aún no existen retos ¿Has pensado en crear uno?</p>
                 )
-            }         
+            }
           }
 
       }}
