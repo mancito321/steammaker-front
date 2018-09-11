@@ -85,7 +85,12 @@ class Group extends Component {
     });
     console.log('este es el grupo:');
     console.log(event.target.name);
+  }
 
+
+  tooltip(text){
+
+  console.log(text)
   }
   render() {
     if (this.state.session) {
@@ -124,7 +129,7 @@ class Group extends Component {
       <ColumnDefinition id="nombre" title="Master Teacher" />
       <ColumnDefinition id="participantes" title="Participantes" />
       <ColumnDefinition id="ver" title="Ver grupo" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) =>{
-         return <Button name={rowData.id} onChange={this.handleChange.bind(this)} onClick={this.handleChange.bind(this)} >VER</Button>;
+         return <Button name={rowData.id} onMouseOver={this.tooltip.bind(this,'ver')} onChange={this.handleChange.bind(this)} onClick={this.handleChange.bind(this)} >VER GRUPO</Button>;
           })} />
     </RowDefinition>
   </Griddle>

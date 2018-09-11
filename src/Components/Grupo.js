@@ -169,8 +169,8 @@ class Grupo extends Component {
          <Col md="12"><h4 className="subtitulo">INFORMACIÓN DEL GRUPO</h4></Col>
          <Col md="12">
          <Row>
-          <Col md="4" xs="12">
-           <div className="image_group"><div className="logo_group"></div></div>
+          <Col md="4" xs="12" className="group_image_cont">
+           <div className="image_group" style={{backgroundImage: 'url(https://cidpullzonestorage.b-cdn.net/steammakers/grupo/'+this.props.id+'/imagen.png)'}}><div className="logo_group"><img src={'https://cidpullzonestorage.b-cdn.net/steammakers/grupo/'+this.props.id+'/logo.png'}/></div></div>
           </Col>
           <Col md="4" xs="12">
             <h5>NOMBRE DEL GRUPO</h5>

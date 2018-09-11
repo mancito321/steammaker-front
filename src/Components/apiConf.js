@@ -1,1 +1,1 @@
-export const apiTesxt = 'http://api-sm.cid.edu.co';
+export const apiTesxt = 'http://localhost:5000';

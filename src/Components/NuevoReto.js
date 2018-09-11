@@ -96,6 +96,7 @@ class NuevoReto extends Component {
     .catch(function (error) {
       this.setState({ failM: true });
     });
+    window.location.replace("/retos");
     event.preventDefault();
   }
   handleDropFile=(e)=> {
@@ -129,7 +130,7 @@ class NuevoReto extends Component {
                     <Row>
                       <Col md="12">
                         <h2 className="titulo">RETOS</h2>
-                        <small>Nuevo Reto</small>
+                        <small>Crear nuevo reto</small>
                       </Col>
                       <Col md="12">
                         <Alert className="notificationfix" color="success" isOpen={this.state.successM} toggle={this.onDismissu}>
@@ -146,13 +147,13 @@ class NuevoReto extends Component {
                           <Container>
                             <Row>
                               <Col xs="12">
-                                <h5>INFORMACIÓN DEL GRUPO</h5>
+                                <h5>INFORMACIÓN DEL RETO</h5>
                               </Col>
                             </Row>
                             <Row>
                               <Col md="6" xs="12">
                                 <FormGroup id="name">
-                                  <Label>Nombre del reto</Label>
+                                  <Label>Nombre del reto *</Label>
                                   <Input type="text" id="name" name="NameReto" placeholder="Ingresa el nombre del reto" onChange={this.handleChange.bind(this)}/>
                                 </FormGroup>
                               </Col>
@@ -173,7 +174,7 @@ class NuevoReto extends Component {
                             <Row>
                               <Col md="6" xs="12">
                                 <FormGroup id="reto">
-                                  <Label for="exampleFile">Reto</Label>
+                                  <Label for="exampleFile">Reto *</Label>
                                   <Input type="file" name="Reto"  onChange={this.handleDropFile}/>
                                   <FormText color="muted">
                                     Advertencia sobre formato y peso del contenido a cargar
@@ -184,7 +185,7 @@ class NuevoReto extends Component {
                             <Row>
                               <Col md="6" xs="12">
                                 <FormGroup id="rubica">
-                                  <Label for="exampleFile">Rubrica</Label>
+                                  <Label for="exampleFile">Rubrica *</Label>
                                   <Input type="file" name="Rubrica"  onChange={this.handleDropFile}/>
                                   <FormText color="muted">
                                     Advertencia sobre formato y peso del contenido a cargar
@@ -195,7 +196,7 @@ class NuevoReto extends Component {
                             <Row>
                               <Col md="6" xs="12">
                                 <FormGroup id="formato">
-                                  <Label for="exampleFile">Formato</Label>
+                                  <Label for="exampleFile">Formato de planeación *</Label>
                                   <Input type="file" name="Formato" onChange={this.handleDropFile}/>
                                   <FormText color="muted">
                                     Advertencia sobre formato y peso del contenido a cargar

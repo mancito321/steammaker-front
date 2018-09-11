@@ -240,10 +240,9 @@ class Retos extends Component {
        {context => {
          console.log('context State');
                  if (context.state==1) {
-            if(this.state.challenge != undefined){
+            if(this.state.retos != undefined){
               return(
-                    GridFixMt
-             )
+                    GridFixMt             )
             }else{
               return(
                 <p>Aún no existen retos ¿Has pensado en crear uno?</p>
@@ -251,7 +250,7 @@ class Retos extends Component {
             }
 
           }else if (context.state==2) {
-             if(this.state.challenge != undefined){
+             if(this.state.retos != undefined){
               return(
                     GridFixSt
              )

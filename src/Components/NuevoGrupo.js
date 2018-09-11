@@ -23,11 +23,14 @@ class NuevoGrupo extends Component {
       participantes:[],
       franchises : [],
       institutions : [],
+      error_name:"",
+      error_name_2:"",
       fotog:null,
       logog:null,
       fotogVal:false,
       logogVal:false,
       nameVal:false,
+      nameVal2:false,
       successM:false,
       tooltipOpen: false,
       failM:false,
@@ -63,17 +66,33 @@ class NuevoGrupo extends Component {
      this.setState({
       [event.target.id]: event.target.value
     },()=>{
-      if(this.state.repassword === this.state.password){
-      console.log('similar')
+      if(this.state.repassword === this.state.password){     
     this.setState({
      error: false
     });
-    }else{
-      console.log('no similar')
+    }else{    
      this.setState({
       error: true
      });
     }
+     if(this.state.error_name >0){
+      this.setState({
+        nameVal: true
+      });
+     }else{
+      this.setState({
+        nameVal: false
+      });
+     }
+     if(this.state.error_name_2 >0){
+      this.setState({
+        nameVal2: true
+      });
+     }else{
+      this.setState({
+        nameVal2: false
+      });
+     }
     });
 
     axios.get(apiTesxt+'/group/franchises',{
@@ -92,23 +111,36 @@ class NuevoGrupo extends Component {
     .then(()=> {
       // always executed
     });
+
      axios.get(apiTesxt+'/group/busy',{
-      params:{
-        tabla: 'group',
-        campo: 'name',
+      params:{      
         valor: this.state.name
       }
     })
     .then((response)=>  {
-      if(response.data >0){
       this.setState({
-        nameVal: true
-      });
-     }else{
+        error_name: response.data[0]['contador']
+      });     
+     console.log(this.state.nameVal)
+
+    })
+    .catch((error)=>  {
+      // handle error
+    })
+    .then(()=> {
+      // always executed
+    }); 
+
+     axios.get(apiTesxt+'/group/busyUser',{
+      params:{      
+        valor: this.state.name
+      }
+    })
+    .then((response)=>  {
       this.setState({
-        nameVal: false
-      });
-     }
+        error_name_2: response.data[0]['contador']
+      });     
+     console.log(this.state.nameVal)
 
     })
     .catch((error)=>  {
@@ -293,7 +325,7 @@ class NuevoGrupo extends Component {
                                 <FormGroup id="name">
                                   <Label>Nombre del grupo  *</Label>
                                   <Input  type="text" id="name"  onChange={this.handleChange.bind(this)} />
-                                    <Alert color="danger" isOpen={this.state.error}>
+                                    <Alert color="danger" isOpen={this.state.nameVal}>
                                     El nombre del grupo ya existe!
                                   </Alert>
                                 </FormGroup>
@@ -377,6 +409,9 @@ class NuevoGrupo extends Component {
                                   <FormText color="muted">
                                     Caracteristicas del nombre de usuario
                                   </FormText>
+                                  <Alert color="danger" isOpen={this.state.nameVal}>
+                                    El usuario del grupo ya existe!
+                                  </Alert>
                                 </FormGroup>
                               </Col>
                             </Row>

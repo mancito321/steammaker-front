@@ -24,6 +24,27 @@ z-index: 1;
     font-weight: 600;
     color: #FFC107;
 }
+.group_image_cont{
+  position: relative;
+}
+.logo_group{
+  width: 80px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.logo_group img{
+  width: 100%;
+
+}
+.image_group{
+        width: 100%;
+    max-width: 250px;
+    height: 100%;
+    max-height: 250px;
+    background-size: cover;
+    background-size: cover;
+}
 .recharts-wrapper,
 .recharts-surface{
   width: 100% !important;
