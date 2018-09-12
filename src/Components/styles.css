@@ -24,6 +24,7 @@ body{
   justify-content: center;
       flex-flow: row wrap;
 }
+
 .imageCenter{
   text-align: center;
 }
