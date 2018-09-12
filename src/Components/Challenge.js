@@ -103,40 +103,51 @@ class Challenge extends Component {
        <Col md="10" xs="12" className="contenido_general">
        <Container className="Contenido_general">
        <Row>
+       <Col md="12" style={{marginBottom:'30px'}}>
+       <h2 className="titulo">DASHBOARD</h2><small>Resumen de actividad</small>
+
+       </Col> 
+       <Col md="12" style={{marginBottom:'10px'}}><h4 className="subtitulo">Último reto</h4></Col>
+       <Row  className="margin_container retangle_cont"> 
        <Col md="12">
-       <h2 className="titulo">INICIO</h2><small>Inicio</small>
-
-       </Col>
-       <Row  className="margin_container">
-       <Col md="12"><h4 className="subtitulo">Último reto</h4></Col>
-         <Col md="4" xs="12">
-         <h5>{this.state.challenge[0].name}</h5>
-         <p>{this.state.challenge[0].contenido}</p>
-          <h5>Fecha de publicación</h5>
-
-        <p>{this.state.challenge[0].ca}</p>
-             <h5>Finalizado</h5>
-
-          <p>{this.state.challenge[0].fn}</p>
-        </Col>
-            <Col md="4" xs="12">
-            <h5>Documentos</h5>
+         <p><h5 className="subtitulo_blue" >{this.state.challenge[0].name}</h5></p>
+          <p>{this.state.challenge[0].contenido}</p>
+          <hr></hr>
+       </Col>  
+<Col md="3" xs="12">
+            <h5 className="subtitulo_blue" >Documentos</h5>
             <Documents key="document" id={this.state.challenge[0].id}/>
         </Col>
-            <Col md="4" xs="12">
-            <h5>Desarrollos</h5>
+         <Col md="3" xs="12">
+            <h5 className="subtitulo_blue" >Desarrollos</h5>
              <Develops key="develops" id={this.state.challenge[0].id}/>
         </Col>
+         <Col md="3" xs="12">         
+        
+          <h5 className="subtitulo_blue" >Fecha de publicación</h5>
+
+        <p>{this.state.challenge[0].ca}</p>
+             
+        </Col> 
+        <Col md="3" xs="12">         
+        
+         <h5 className="subtitulo_blue" >Finalizado</h5>
+
+          <p>{this.state.challenge[0].fn}</p>
+             
+        </Col>
+            
+           
       </Row>
       <Row>
-
-     <Col md="12" className="line">  <BarChart width={1000} height={300} data={this.state.group} margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+     <Col md="12" className="line">  <h2 className="titulo">Ranking</h2></Col>
+     <Col md="12" >  <BarChart width={1000} height={300} data={this.state.group} margin={{top: 5, right: 30, left: 20, bottom: 5}}>
        <CartesianGrid strokeDasharray="3 3"/>
        <XAxis dataKey="name"/>
        <YAxis/>
        <Tooltip/>
        <Legend />
-       <Bar dataKey="puntos" fill="#8884d8" minPointSize={5}>
+       <Bar dataKey="puntos" fill="#ffbb11" minPointSize={5}>
         </Bar>
       </BarChart></Col>
 
@@ -176,7 +187,7 @@ class Challenge extends Component {
           <h2 className="titulo">DASHBOARD</h2><small>Resumen de actividad</small>
           </Col>
           <Row  className="margin_container">
-       <h1>NO HAY RETOS!!</h1>
+           <h1>NO HAY RETOS!!</h1>
           </Row>
           <Row  className="margin_container">
         <Col md="12" className="line">  <BarChart width={1000} height={300} data={this.state.group} margin={{top: 5, right: 30, left: 20, bottom: 5}}>

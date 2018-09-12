@@ -44,9 +44,9 @@ componentDidMount (){
         {this.state.recursos.map((file,i)=>{
           let ref ="https://cidpullzonestorage.b-cdn.net"+file.slice(11)
           return(
-            <a href={ref} target="_blank">
-              <li>{file.slice(38)}</li>
-            </a>
+            <li >
+            <span className="documents_img"><img src={require('../assets/attach.svg')} /></span><a href={ref} target="_blank">{file.slice(38)}</a>
+          </li>
           )
         })
         }

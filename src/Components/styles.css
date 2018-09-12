@@ -6,6 +6,41 @@
   padding-right: 0;
   padding-left: 0;
 }
+.Percent50{
+  width: 50%;
+    padding: 2em 0em;
+}
+.blurr{
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: grey
+}
+.modalI{
+  z-index: 2;
+  position: absolute;
+  width: 60%;
+  left: 20%;
+  top: 5em;
+  display: flex;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
+      flex-flow: row wrap;
+}
+
+.imageCenter{
+  text-align: center;
+}
+.imageCenter img{
+  max-width: 100%;
+  padding: 0 2em;
+}
+.textJust{
+  text-align: justify;
+}
+.textJust p{
 
 
 
