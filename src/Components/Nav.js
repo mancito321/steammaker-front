@@ -57,14 +57,14 @@ class Header extends React.Component {
           <div className='VertMenu'>
             <div className='menuItem'>
               <Link to="/reto">
-                <span><img src={require('../assets/assets/icons/trophy.svg')}/></span>
+                <span><img src={require('../assets/trophy.svg')}/></span>
                 Inicio</Link>
             </div>
 
                 <Nav className="ml-auto menuItem" navbar="navbar">
             <UncontrolledDropdown inNavbar>
               <DropdownToggle nav="nav" caret="caret">
-                <span><img src={require('../assets/assets/icons/chronometer.svg')}/></span>
+                <span><img src={require('../assets/chronometer.svg')}/></span>
                 Retos
               </DropdownToggle>
               <DropdownMenu>
@@ -100,7 +100,7 @@ class Header extends React.Component {
             <Nav className="ml-auto menuItem" navbar="navbar">
             <UncontrolledDropdown inNavbar>
               <DropdownToggle nav="nav" caret="caret">
-                <span><img src={require('../assets/assets/icons/groups_config.svg')}/></span>
+                <span><img src={require('../assets/groups_config.svg')}/></span>
                 Grupos
               </DropdownToggle>
               <DropdownMenu right="right">
@@ -141,7 +141,7 @@ class Header extends React.Component {
                         sessionStorage.removeItem('mySteamM');
                         context.actions.logOut();
                       }}>
-                      <span><img src={require('../assets/assets/icons/exit.svg')}/></span>
+                      <span><img src={require('../assets/exit.svg')}/></span>
                       <span>Salir</span>
                     </Link>)
 
