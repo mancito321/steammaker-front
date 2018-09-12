@@ -117,7 +117,7 @@ class Group extends Component {
        <h2 className="titulo">GRUPOS</h2><small>Todos los grupos</small>
        </Col>
        <Row  className="margin_container">
-   <Col md="12">
+   <Col md="12" className="table_cont">
      <Griddle components={{Layout: NewLayout, Filter }} data={this.state.group} plugins={[plugins.LocalPlugin]}>
     <RowDefinition>
        <ColumnDefinition id="logo" title="Logo" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) =>{
@@ -129,7 +129,7 @@ class Group extends Component {
       <ColumnDefinition id="nombre" title="Master Teacher" />
       <ColumnDefinition id="participantes" title="Participantes" />
       <ColumnDefinition id="ver" title="Ver grupo" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) =>{
-         return <Button name={rowData.id} onMouseOver={this.tooltip.bind(this,'ver')} onChange={this.handleChange.bind(this)} onClick={this.handleChange.bind(this)} >VER GRUPO</Button>;
+         return <Button className="ver_table" name={rowData.id} onMouseOver={this.tooltip.bind(this,'ver')} onChange={this.handleChange.bind(this)} onClick={this.handleChange.bind(this)} ><img src={require('../assets/zoom.svg')} /></Button>;
           })} />
     </RowDefinition>
   </Griddle>
@@ -138,7 +138,7 @@ class Group extends Component {
                {context => {
                    if (context.state==1) {
                      return(
-   <Col md="12" className="center margin_container"><Link to="/nuevo_grupo" ><Button>Crear un grupo</Button></Link></Col>
+   <Col md="12" className="center margin_container"><Link to="/nuevo_grupo" ><Button className="submit_login">Crear un grupo</Button></Link></Col>
 
                      )
                    }

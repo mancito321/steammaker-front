@@ -11,13 +11,13 @@ onChange(e) {
 render() {
  return (
             <div className="searchInput">
-                <input 
+                <span>Buscar</span><input 
                   type="text" 
-                  className="form-control"
-                  placeholder="Filtrar" 
+                  className="form-control filter"
+                  placeholder="Ingresa un término de búsqueda" 
                   onChange={this.onChange}
                 />
-                <label htmlFor="Buscar" className="icon icon-1202" rel="tooltip" title="buscar"></label>
+                
               </div> 
  )
 }

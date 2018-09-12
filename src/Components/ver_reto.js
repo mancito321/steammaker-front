@@ -6,7 +6,7 @@ import Footer from './Footer'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import {apiTesxt} from './apiConf'
-
+import Filter from './Filter'
 import { ChallengeCon } from './ChallengeContext';
 import Reto from './Reto'
 import Griddle, { plugins, RowDefinition, ColumnDefinition,Components} from 'griddle-react';
@@ -150,15 +150,14 @@ class Retos extends Component {
 
   render() {
 
-    let GridFixMt=(<Griddle components={{Layout: NewLayout}} data={this.state.retos} plugins={[plugins.LocalPlugin]}>
+    let GridFixMt=(<Griddle components={{Layout: NewLayout, Filter}} data={this.state.retos} plugins={[plugins.LocalPlugin]}>
    <RowDefinition>
-     <ColumnDefinition id="logo" title="Logo" customComponent={enhancedWithRowData(id)} />
      <ColumnDefinition id="name" title="Nombre" />
      <ColumnDefinition id="ca" title="Inicio" />
      <ColumnDefinition id="fn" title="Finalizado" />
      <ColumnDefinition id="desarrollos" title="Desarrollado" />
      <ColumnDefinition id="verRe" title="Ver reto" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) =>{
-        return <Button name={rowData.id} onChange={this.handleChange.bind(this)} onClick={this.handleChange.bind(this)} >VER</Button>;
+        return <Button name={rowData.id} className="ver_table" onChange={this.handleChange.bind(this)} onClick={this.handleChange.bind(this)} ><img src={require('../assets/zoom.svg')} /></Button>;
          })} />
          <ColumnDefinition id="ver" title="Opciones" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) =>{
           return <div>{rowData.active == 0 ? (<input type="checkbox" name={rowData.id} onClick={this.toggle.bind(this)} />) : (<input type="checkbox"  checked  name={rowData.id} onClick={this.toggle1.bind(this)}/>) }</div>;
@@ -167,15 +166,14 @@ class Retos extends Component {
 
    </RowDefinition>
  </Griddle>)
- let GridFixSt=(<Griddle components={{Layout: NewLayout}} data={this.state.retos}  plugins={[plugins.LocalPlugin]}>
+ let GridFixSt=(<Griddle components={{Layout: NewLayout, Filter}} data={this.state.retos}  plugins={[plugins.LocalPlugin]}>
 <RowDefinition>
-  <ColumnDefinition id="logo" title="Logo" customComponent={enhancedWithRowData(id)} />
   <ColumnDefinition id="name" title="Nombre" />
   <ColumnDefinition id="ca" title="Inicio" />
   <ColumnDefinition id="fn" title="Finalizado" />
   <ColumnDefinition id="desarrollos" title="Desarrollado" />
   <ColumnDefinition id="verRe" title="Ver reto" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) =>{
-     return <Button name={rowData.id} onChange={this.handleChange.bind(this)} onClick={this.handleChange.bind(this)} >VER</Button>;
+     return <Button name={rowData.id} className="ver_table" onChange={this.handleChange.bind(this)} onClick={this.handleChange.bind(this)} ><img src={require('../assets/zoom.svg')} /></Button>;
       })} />
 </RowDefinition>
 </Griddle>)
@@ -234,7 +232,7 @@ class Retos extends Component {
        <h2 className="titulo">RETOS</h2><small>Todos los retos</small>
        </Col>
        <Row  className="margin_container">
-   <Col md="12">
+   <Col md="12" className="table_cont">
 
      <ChallengeCon>
        {context => {
@@ -269,7 +267,7 @@ class Retos extends Component {
                {context => {
                    if (context.state==1) {
                      return(
-                         <Col md="12" className="center margin_container"><Link to="/nuevo_reto" ><Button>Crear un reto</Button></Link></Col>
+                         <Col md="12" className="center margin_container"><Link to="/nuevo_reto" ><Button className="submit_login">Crear un reto</Button></Link></Col>
 
                      )
                    }
