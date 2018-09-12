@@ -70,7 +70,7 @@ class App extends Component {
         })
          .then((response)=>  {
            console.log('responses: '+response);
-            this.setState({
+          this.setState({
               permission:response.data.rol,
               grupo:response.data.group,
               onAction:0
@@ -92,31 +92,7 @@ class App extends Component {
   }
   componentWillUpdate(){
     console.log('will update');
-    let session=JSON.parse(sessionStorage.getItem('mySteamM'))
-    console.log('My session');
-    console.log(session);
-    if (session!=null && this.state.permission==0) {
-          axios.get(apiTesxt+'/api/auth/me',{
-            headers: {
-                'content-type': 'multipart/form-data',
-                'x-access-token':session.token
-            }
-        })
-         .then((response)=>  {
-           console.log('responses: '+response);
-            this.setState({
-              permission:response.data.rol,
-              grupo:response.data.group
-            })
-          })
-          .catch((error)=>  {
-          // handle error
-          console.log('Fuck '+error);
-           })
-           .then(()=> {
-          console.log(this.state.permission);
-           });
-    }
+    
   }
 
   render() {
@@ -172,7 +148,6 @@ class App extends Component {
               <Route path='/grupos' component={this.state.session!=null ?Grupos:Log} />
               <Route path='/retos' component={this.state.session!=null ?Retos:Log} />
               <Route path='/' component={Log} />
-              <Redirect to='/' />
             </Switch>
         </Router>
         </ChallengePro>

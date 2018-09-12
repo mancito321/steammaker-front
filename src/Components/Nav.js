@@ -1,11 +1,32 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import logo from '../logo.svg';
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import '../App.css';
+import './styles.css';
 
-import { ChallengeCon } from './ChallengeContext';
-import { Container, Row, Col,Button, FormGroup, Input , Label } from "reactstrap";
-import { Collapse,  Navbar,  NavbarToggler,  NavbarBrand,  Nav,  NavItem,  NavLink,  UncontrolledDropdown,  DropdownToggle,  DropdownMenu,  DropdownItem } from 'reactstrap';
+import {ChallengeCon} from './ChallengeContext';
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  FormGroup,
+  Input,
+  Label
+} from "reactstrap";
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from 'reactstrap';
 
 class Header extends React.Component {
   constructor(props) {
@@ -13,7 +34,7 @@ class Header extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false,
+      isOpen: false
     };
   }
   toggle() {
@@ -21,95 +42,118 @@ class Header extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
-  handleChange (event){
-    this.setState({
-      detail: event.target.name
-    });
+  handleChange(event) {
+    this.setState({detail: event.target.name});
 
   }
   render() {
-    return (
-      <Container>
+    return (<Container fluid="fluid" className='Mask'>
       <Row>
-         <Col md="12" xs="12" className="logo"><img src="http://via.placeholder.com/350x150"/></Col>
+        <Col md="12" xs="12" className="logo"><img src={require('../assets/steam_makers.png')}/></Col>
       </Row>
       <Row>
-      <Col md="12" xs="12">
-        <Navbar color="light" light expand="md">
-         <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink><Link to="/reto">Inicio</Link></NavLink>
-              </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Retos
-                </DropdownToggle>
-                <DropdownMenu right>
+
+        <Col md="12" xs="12">
+          <div className='VertMenu'>
+            <div className='menuItem'>
+              <Link to="/reto">
+                <span><img src={require('../assets/assets/icons/trophy.svg')}/></span>
+                Inicio</Link>
+            </div>
+
+                <Nav className="ml-auto menuItem" navbar="navbar">
+            <UncontrolledDropdown inNavbar>
+              <DropdownToggle nav="nav" caret="caret">
+                <span><img src={require('../assets/assets/icons/chronometer.svg')}/></span>
+                Retos
+              </DropdownToggle>
+              <DropdownMenu>
 
                 <ChallengeCon>
-                  {context => {
-                   if (context.state==1) {
-                     return(
-                       <NavLink name="0" onClick={this.handleChange.bind(this)}>
-                      <DropdownItem>
-                          <Link to="/nuevo_reto">Nuevo reto</Link>
-                      </DropdownItem>
-                      </NavLink>
-                     )
-                   }
-                 }}
+                  {
+                    context => {
+                      if (context.state == 1) {
+                        return (<NavLink name="0" onClick={this.handleChange.bind(this)}>
+                          <Link to="/nuevo_reto">
+                            <DropdownItem>
+                              Nuevo reto
+                            </DropdownItem>
+                          </Link>
+                        </NavLink>)
+                      }
+                    }
+                  }
                 </ChallengeCon>
-                 <NavLink  name="0" onClick={this.handleChange.bind(this)}>
-                <DropdownItem>
-                    <Link to={{pathname: "/retos", state: "edita"}}>Ver retos</Link>
-                </DropdownItem>
+                <NavLink name="0" onClick={this.handleChange.bind(this)}>
+                  <Link to={{
+                      pathname: "/retos",
+                      state: "edita"
+                    }}>
+                    <DropdownItem>
+                      Ver retos
+                    </DropdownItem>
+                  </Link>
                 </NavLink>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Grupos
-                </DropdownToggle>
-                <DropdownMenu right>
-                <ChallengeCon>
-                  {context => {
-                   if (context.state==1) {
-                     return(
-                       <NavLink>
-                       <DropdownItem>
-                         <Link to="/nuevo_grupo">Nuevo Grupo</Link>
-                      </DropdownItem></NavLink>
-                     )
-                   }
-                 }}
-                </ChallengeCon>
-                 <NavLink name="0" onClick={this.handleChange.bind(this)}>
-                <DropdownItem>
-                    <Link to={{pathname: "/grupos", state: "edita"}}>Ver Grupos</Link>
-                </DropdownItem>
-                </NavLink>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-              <NavItem>
-                  <ChallengeCon>
-                    {context => {
-                       return(
-                         <NavLink onClick={()=>{sessionStorage.removeItem('mySteamM');context.actions.logOut();}}><Link to="/">Salir</Link></NavLink>
-                       )
-
-                   }}
-                  </ChallengeCon>
-              </NavItem>
-
+              </DropdownMenu>
+            </UncontrolledDropdown>
             </Nav>
-          </Collapse>
-        </Navbar>
+            <Nav className="ml-auto menuItem" navbar="navbar">
+            <UncontrolledDropdown inNavbar>
+              <DropdownToggle nav="nav" caret="caret">
+                <span><img src={require('../assets/assets/icons/groups_config.svg')}/></span>
+                Grupos
+              </DropdownToggle>
+              <DropdownMenu right="right">
+                <ChallengeCon>
+                  {
+                    context => {
+                      if (context.state == 1) {
+                        return (<NavLink>
+                          <Link to="/nuevo_grupo">
+                            <DropdownItem>
+                              Nuevo Grupo
+                            </DropdownItem>
+                          </Link>
+                        </NavLink>)
+                      }
+                    }
+                  }
+                </ChallengeCon>
+                <NavLink name="0" onClick={this.handleChange.bind(this)}>
+                  <Link to={{
+                      pathname: "/grupos",
+                      state: "edita"
+                    }}>
+                    <DropdownItem>
+                      Ver Grupos
+                    </DropdownItem>
+                  </Link>
+                </NavLink>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+        </Nav>
+            <div className='menuItem'>
+            <ChallengeCon>
+              {
+                context => {
+                  return (
+                    <Link to="/" onClick={() => {
+                        sessionStorage.removeItem('mySteamM');
+                        context.actions.logOut();
+                      }}>
+                      <span><img src={require('../assets/assets/icons/exit.svg')}/></span>
+                      <span>Salir</span>
+                    </Link>)
+
+                }
+              }
+            </ChallengeCon>
+            </div>
+
+          </div>
         </Col>
       </Row>
-</Container>
-    );
+    </Container>);
   }
 }
 

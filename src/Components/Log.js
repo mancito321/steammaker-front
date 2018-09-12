@@ -41,6 +41,7 @@ class Log extends Component {
       this.setState({
         session: false
       });
+      window.location.reload();
     })
     .catch( (error)=> {
       console.log(error);
