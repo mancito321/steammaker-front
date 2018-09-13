@@ -108,7 +108,7 @@ class Group extends Component {
      <div>
       <Container fluid="true">
        <Row>
-       <Col md="2" className="nav_cont"><Nav/></Col>
+       <Nav/>
        <Col md="2"></Col>
        <Col md="10" xs="12" className="contenido_general">
        <Container className="Contenido_general">
@@ -129,7 +129,7 @@ class Group extends Component {
       <ColumnDefinition id="nombre" title="Master Teacher" />
       <ColumnDefinition id="participantes" title="Participantes" />
       <ColumnDefinition id="ver" title="Ver grupo" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) =>{
-         return <Button className="ver_table" name={rowData.id} onMouseOver={this.tooltip.bind(this,'ver')} onChange={this.handleChange.bind(this)} onClick={this.handleChange.bind(this)} ><img src={require('../assets/zoom.svg')} /></Button>;
+         return <Button className="ver_table" name={rowData.id} onMouseOver={this.tooltip.bind(this,'ver')} onChange={this.handleChange.bind(this)} onClick={this.handleChange.bind(this)} ></Button>;
           })} />
     </RowDefinition>
   </Griddle>

@@ -113,10 +113,6 @@ class Retos extends Component {
      });
        window.location.assign("/retos")
   }
- componentDidUpdate(){
-  console.log(this.state.active)
-
- }
 
   handleChange (event){
 
@@ -157,7 +153,7 @@ class Retos extends Component {
      <ColumnDefinition id="fn" title="Finalizado" />
      <ColumnDefinition id="desarrollos" title="Desarrollado" />
      <ColumnDefinition id="verRe" title="Ver reto" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) =>{
-        return <Button name={rowData.id} className="ver_table" onChange={this.handleChange.bind(this)} onClick={this.handleChange.bind(this)} ><img src={require('../assets/zoom.svg')} /></Button>;
+        return <Button name={rowData.id} className="ver_table" onChange={this.handleChange.bind(this)} onClick={this.handleChange.bind(this)} ></Button>;
          })} />
          <ColumnDefinition id="ver" title="Opciones" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) =>{
           return <div>{rowData.active == 0 ? (<input type="checkbox" name={rowData.id} onClick={this.toggle.bind(this)} />) : (<input type="checkbox"  checked  name={rowData.id} onClick={this.toggle1.bind(this)}/>) }</div>;
@@ -173,7 +169,7 @@ class Retos extends Component {
   <ColumnDefinition id="fn" title="Finalizado" />
   <ColumnDefinition id="desarrollos" title="Desarrollado" />
   <ColumnDefinition id="verRe" title="Ver reto" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) =>{
-     return <Button name={rowData.id} className="ver_table" onChange={this.handleChange.bind(this)} onClick={this.handleChange.bind(this)} ><img src={require('../assets/zoom.svg')} /></Button>;
+     return <Button name={rowData.id} className="ver_table" onChange={this.handleChange.bind(this)} onClick={this.handleChange.bind(this)} ></Button>;
       })} />
 </RowDefinition>
 </Griddle>)
@@ -223,7 +219,7 @@ class Retos extends Component {
           </ModalFooter>
       </Modal>
        <Row>
-       <Col md="2" className="nav_cont"><Nav/></Col>
+     <Nav/>
        <Col md="2"></Col>
        <Col md="10" xs="12" className="contenido_general">
        <Container className="Contenido_general">
@@ -235,9 +231,8 @@ class Retos extends Component {
    <Col md="12" className="table_cont">
 
      <ChallengeCon>
-       {context => {
-         console.log('context State');
-                 if (context.state==1) {
+       {context => {     
+            if (context.state==1) {
             if(this.state.retos != undefined){
               return(
                     GridFixMt             )

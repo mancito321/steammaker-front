@@ -34,7 +34,8 @@ class Header extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      nav: false
     };
   }
   toggle() {
@@ -46,11 +47,30 @@ class Header extends React.Component {
     this.setState({detail: event.target.name});
 
   }
+  nav_mov() {
+     this.setState({
+      nav: !this.state.nav
+    });
+    if(this.state.nav){
+       document.getElementById("nav_cont").style.left = "-240.2px";
+    }else{
+     document.getElementById("nav_cont").style.left = "0px";
+    } 
+  }
+
   render() {
-    return (<Container fluid="fluid">
-      <Row>
-        <Col md="12" xs="12" className="logo"><img src={require('../assets/steam_makers.png')}/></Col>
-      </Row>
+
+    return (
+      <div>
+      <Col md="12" className="nav_mov" id="nav_mov" onClick={this.nav_mov.bind(this)}>
+        <div className="burger"></div>
+      </Col>    
+
+      <Col md="2" className="nav_cont" id="nav_cont">
+      <div className="mountain_nav">
+      <div className="trees_nav">
+      <Container fluid="fluid">      
+        <img className="image_logo" src={require('../assets/steam_makers.png')}/>     
       <Row>
 
         <Col md="12" xs="12">
@@ -152,8 +172,14 @@ class Header extends React.Component {
 
           </div>
         </Col>
+      
       </Row>
-    </Container>);
+    </Container>
+      </div>
+      </div>
+      </Col>
+      </div>
+      );
   }
 }
 

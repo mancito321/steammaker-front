@@ -206,7 +206,7 @@ handleButtonChange(event){
     <div>
       <Container fluid="true">
        <Row>
-       <Col md="2" className="nav_cont"><Nav/></Col>
+       <Nav/>
        <Col md="2"></Col>
        <Col md="10" xs="12" className="contenido_general">
        <Container className="Contenido_general">
@@ -215,34 +215,21 @@ handleButtonChange(event){
        <h2 className="titulo">GRUPOS</h2><small>Detalle de grupo - Solucion de reto</small>
 
        </Col>
-       <Row  className="margin_container">
        <Col md="12"><h4 className="subtitulo">INFORMACIÓN DEL DESARROLLO</h4></Col>
+       <Row  className="margin_container retangle_cont reactangle">
+       
         <Col md="6">
-        <h5>Fecha de publicación</h5>
+        <h5 className="subtitulo_blue">Fecha de publicación</h5>
         <p>{this.state.challenge[0].ca}</p>
         </Col>
         <Col md="6">
-        <h5>{this.state.challenge[0].name}</h5>
-        <Button onClick={this.toggle}>Ver reto</Button>
+        <h5 className="subtitulo_blue">{this.state.challenge[0].name}</h5>
+        <Button   className="submit_login_2" onClick={this.toggle}>Ver reto</Button>
         </Col>
-        <Col md="12">  <h5>Ver desarrollo</h5>
-        <Button onClick={this.modalSol.bind(this)}>Ver reto</Button>
-      </Col>
-        </Row>
-
-        <Row className="margin_container form_margin ">
-        <Col md="4">
-        <h5>Recursos adicionales</h5>
-        </Col>
-        <Col md="4">
-        {this.state.challenge[0].recursos}
-        </Col>
-        <Col md="4">
-        <h5>Comentarios sobre el reto</h5>
-        </Col>
-        </Row>
-        <Row className="margin_container form_margin ">
-
+        <Col md="12">  <h5 className="subtitulo_blue">Ver desarrollo</h5>
+        <Button   className="submit_login_2" onClick={this.modalSol.bind(this)}>Ver reto</Button>
+        <hr></hr>
+      </Col>  
 
         <ChallengeCon>
           {context => {
@@ -251,7 +238,7 @@ handleButtonChange(event){
            if (context.state==1) {
              return(
                <Col md="4" className={this.state.edit}>
-               <h5>Puntuar reto</h5>
+               <h5 className="subtitulo_blue">Puntuar reto</h5>
                <Row>
                  <Col md="8">Formato<p className="red">{this.state.valor1e}</p></Col>
                  <Col md="4">
@@ -279,7 +266,7 @@ handleButtonChange(event){
 
                  </Col>
                  <Col xs="12">
-                   <Button  disabled={!this.validateForm()} onClick={this.handleInputClick.bind(this)}>Puntuar</Button>
+                   <Button    className="submit_login_2" disabled={!this.validateForm()} onClick={this.handleInputClick.bind(this)}>Puntuar</Button>
                  </Col>
                </Row>
 
@@ -289,11 +276,11 @@ handleButtonChange(event){
          }}
         </ChallengeCon>
         <Col md="4">
-        <h5 className="center">Puntaje general</h5>
+        <h5 className="center subtitulo_blue">Puntaje general</h5>
         <h1 className="center">{this.state.punctuation}</h1>
         </Col>
         <Col md="4">
-         <h5 className="center">Puntaje por area</h5>
+         <h5 className="center subtitulo_blue">Puntaje por area</h5>
 <RadarChart outerRadius={90} width={420} height={250} data={[
     { subject: 'Formato', A: this.state.valor1p,  fullMark: 15 },
     { subject: 'Big Art', A: this.state.valor2p, fullMark: 30 },
@@ -309,7 +296,7 @@ handleButtonChange(event){
   <Legend />
 </RadarChart>
       </Col>
-        <Col md="12" className="center"> <Button onClick={this.props.handler}>Regresar</Button></Col>
+        <Col md="12" className="center"> <Button   className="submit_login_2"onClick={this.props.handler}>Regresar</Button></Col>
 
       </Row>
         <Col md="12" className="margin_container form_margin "></Col>
@@ -325,8 +312,8 @@ handleButtonChange(event){
             ¿Está seguro de registrar el puntaje ingresado? tenga en cuenta que luego de confirmar el puntaje no podrá cambiarlo
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.handleButtonChange.bind(this)}>Confirmar</Button>{' '}
-            <Button color="secondary" onClick={this.handleInputClick.bind(this)}>Cancelar</Button>
+            <Button   className="submit_login_2" color="primary" onClick={this.handleButtonChange.bind(this)}>Confirmar</Button>{' '}
+            <Button   className="submit_login_2" color="secondary" onClick={this.handleInputClick.bind(this)}>Cancelar</Button>
           </ModalFooter>
         </Modal>
          <Modal isOpen={this.state.modals} toggle={this.toggle} className='modal-dialog-centered modal-lg'>

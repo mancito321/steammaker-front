@@ -42,12 +42,32 @@
   text-align: justify;
 }
 .nav_cont{
-  width: 265px;
-  height: 1024px;
-  background-image: linear-gradient(to bottom, #0082dc, #109dff);
-  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
-  padding-right: 0;
-  padding-left: 0;
+     width: 265px;
+    height: 1024px;
+    background: url(../assets/star.svg) #109dff;    
+    background-position-y: 94%;   
+    -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
+    padding-right: 0;
+    padding-left: 0;
+}
+.trees_nav{
+   background-image: url(../assets/tree_bg.png);  
+    background-repeat: repeat-x;
+    background-position-y: 94%;
+    background-size: contain;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.mountain_nav{
+   background-image: url(../assets/mountains_bg.png);  
+    background-repeat: repeat-x;
+    background-position-y: 94%;
+    background-size: contain;
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 .icon_nav{
   margin-right: 1em;
@@ -61,7 +81,7 @@
   background: none;
   border:none;
   color: #fff;
-  font-weight: 900;+
+  font-weight: 900;
   cursor:pointer;
 }
 .VertMenu .dropdown-item,.VertMenu .dropdown-item {

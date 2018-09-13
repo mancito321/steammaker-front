@@ -191,7 +191,7 @@ componentWillMount(){
           <div>
             <Container fluid="true">
               <Row>
-                <Col md="2" className="nav_cont"><Nav/></Col>
+                <Nav/>
                 <Col md="2"></Col>
                 <Col md="10" xs="12" className="contenido_general">
                   <Container className="Contenido_general">
