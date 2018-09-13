@@ -107,6 +107,7 @@ class Grupo extends Component {
     // handle error
      })
      .then(()=> {
+      console.log(this.state.challenge)
     // always executed
      });
   }
@@ -157,7 +158,7 @@ class Grupo extends Component {
       </Modal>
       <Container fluid="true">
        <Row>
-       <Col md="2" className="nav_cont"><Nav/></Col>
+       <Nav/>
        <Col md="2"></Col>
        <Col md="10" xs="12" className="contenido_general">
        <Container className="Contenido_general">
@@ -168,27 +169,27 @@ class Grupo extends Component {
        <Row  className="margin_container">
          <Col md="12"><h4 className="subtitulo">INFORMACIÓN DEL GRUPO</h4></Col>
          <Col md="12">
-         <Row>
+         <Row className="retangle_cont reactangle">
           <Col md="4" xs="12" className="group_image_cont">
            <div className="image_group" style={{backgroundImage: 'url(https://cidpullzonestorage.b-cdn.net/steammakers/grupo/'+this.props.id+'/imagen.png)'}}><div className="logo_group"><img src={'https://cidpullzonestorage.b-cdn.net/steammakers/grupo/'+this.props.id+'/logo.png'}/></div></div>
           </Col>
           <Col md="4" xs="12">
-            <h5>NOMBRE DEL GRUPO</h5>
+            <h5 className="subtitulo_blue">NOMBRE DEL GRUPO</h5>
             <p>{this.state.group[0].name}</p>
-            <h5>PUNTAJE GENERAL</h5>
+            <h5 className="subtitulo_blue">PUNTAJE GENERAL</h5>
             <h1>{this.state.group[0].punctuation}</h1>
           </Col>
           <Col md="4" xs="12">
-            <h5>MASTER TEACHER</h5>
+            <h5 className="subtitulo_blue">MASTER TEACHER</h5>
             <p>{this.state.group[0].user}</p>
-            <h5>PARTICIPANTES</h5>
+            <h5 className="subtitulo_blue">PARTICIPANTES</h5>
              <ul className="participants_list">{this.state.participants[0].name.replace('[','').replace(']',' ').split(',').map(function(item, i){
             return (<li>{item}</li>)
            })}</ul>
           </Col>
           </Row>
          </Col>
-         <Col md="12">
+         <Col md="12" className="line ">
          <h4 className="subtitulo">RETOS DESARROLLADOS</h4>
           <p>
 
@@ -198,14 +199,14 @@ class Grupo extends Component {
       <ColumnDefinition id="ca" title="FECHA DE PUBLICACIÓN" />
       <ColumnDefinition id="fn" title="FECHA DE FINALIZACIÓN" />
       <ColumnDefinition id="punctuation" title="PUNTAJE GENERAL" />
-      <ColumnDefinition id="reto" title="VER RETO" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) => {  return <Button onClick={this.handleChange.bind(this)} name={rowData.id}>VER</Button>;})} />
-      <ColumnDefinition id="desarrollo" title="DESARROLLO" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) => {  return <Button onClick={this.handleClick.bind(this)} name={rowData.id} id="1">VER</Button>;})} />
+      <ColumnDefinition id="reto" title="VER RETO" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) => {  return <Button className="ver_table" onClick={this.handleChange.bind(this)}  name={rowData.id}></Button>;})} />
+      <ColumnDefinition id="desarrollo" title="DESARROLLO" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) => {  return <Button onClick={this.handleClick.bind(this)} className="ver_table"  name={rowData.id} id="1"></Button>;})} />
     </RowDefinition>
   </Griddle>
 
           </p>
          </Col>
-          <Col md="12" className="margin_container"><Button onClick={this.props.handler}>Regresar a la pagina anterior</Button></Col>
+          <Col md="12" className="margin_container"><Button  className="submit_login" onClick={this.props.handler}>Regresar a la pagina anterior</Button></Col>
       </Row>
 
       </Row>

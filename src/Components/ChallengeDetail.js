@@ -63,24 +63,36 @@ class Challenge extends Component {
     }else {
       try{
         return (
-      <Row  className="margin_container">
-         <Col md="6" xs="12">
-         <h5>{this.state.challenge[0].name}</h5>
-         <p>{this.state.challenge[0].contenido}</p>
-          <h5>Fecha de publicación</h5>
+     <Row  className="margin_container retangle_cont"> 
+       <Col md="12">
+         <p><h5 className="subtitulo_blue" >{this.state.challenge[0].name}</h5></p>
+          <p>{this.state.challenge[0].contenido}</p>
+          <hr></hr>
+       </Col>  
+     <Col md="3" xs="12">
+            <h5 className="subtitulo_blue" >Documentos</h5>
+            <Documents key="document" id={this.state.challenge[0].id}/>
+        </Col>
+         <Col md="3" xs="12">
+            <h5 className="subtitulo_blue" >Desarrollos</h5>
+             <Develops key="develops" id={this.state.challenge[0].id}/>
+        </Col>
+         <Col md="3" xs="12">         
+        
+          <h5 className="subtitulo_blue" >Fecha de publicación</h5>
 
         <p>{this.state.challenge[0].ca}</p>
-             <h5>Finalizado</h5>
+             
+        </Col> 
+        <Col md="3" xs="12">         
+        
+         <h5 className="subtitulo_blue" >Finalizado</h5>
 
           <p>{this.state.challenge[0].fn}</p>
+             
         </Col>
-
-        <Col md="4" xs="12">
-          <h5>Documentos</h5>
-          <Documents key="document" id={this.state.challenge[0].id}/>
-      </Col>
-
-
+            
+           
       </Row>
       );
       }catch(error){

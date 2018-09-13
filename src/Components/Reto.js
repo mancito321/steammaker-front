@@ -216,7 +216,7 @@ class Reto extends Component {
       </Modal>
       <Container fluid="true">
        <Row>
-       <Col md="2" className="nav_cont"><Nav/></Col>
+      <Nav/>
        <Col md="2"></Col>
        <Col md="10" xs="12" className="contenido_general">
        <Container className="Contenido_general">
@@ -242,9 +242,9 @@ class Reto extends Component {
          <Col xs="12">
            <ChallengeCon>
              {context => {
-                if (context.state==2) {
+                if (context.state==1) {
                   return(
-                        <Button onClick={this.handleDeve} disabled={this.state.boton} >Desarrollo</Button>
+                        <Button onClick={this.handleDeve}   className="submit_login" disabled={this.state.boton} >Desarrollo</Button>
                   )
                 }else {
                   return(<div></div>)
@@ -263,14 +263,14 @@ class Reto extends Component {
       <ColumnDefinition id="gname" title="Nombre" />
       <ColumnDefinition id="uname" title="Master Teacher" />
       <ColumnDefinition id="ca" title="Fecha" />
-      <ColumnDefinition id="reto" title="Ver grupo" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) => {  return <Button onClick={this.handleButton.bind(this)} id="1" name={rowData.id}>VER</Button>;})} />
-      <ColumnDefinition id="desarrollo" title="Ver desarrollo" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) => {  return <Button onClick={this.handleButton.bind(this)} name={[rowData.id,rowData.chid,rowData.punctuation]} id="2">VER</Button>;})} />
+      <ColumnDefinition id="reto" title="Ver grupo" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) => {  return <Button onClick={this.handleButton.bind(this)} className="ver_table" id="1" name={rowData.id}></Button>;})} />
+      <ColumnDefinition id="desarrollo" title="Ver desarrollo" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) => {  return <Button onClick={this.handleButton.bind(this)} className="ver_table" name={[rowData.id,rowData.chid,rowData.punctuation]} id="2"></Button>;})} />
     </RowDefinition>
   </Griddle>
 
           </p>
          </Col>
-          <Col md="12" className="margin_container"><Button onClick={this.props.handler}>Regresar a la pagina anterior</Button></Col>
+          <Col md="12" className="margin_container" ><Button className="submit_login" onClick={this.props.handler}>Regresar a la pagina anterior</Button></Col>
       </Row>
 
       </Row>

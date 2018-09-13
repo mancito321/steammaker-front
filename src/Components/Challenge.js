@@ -98,7 +98,7 @@ class Challenge extends Component {
          }}
         </ChallengeCon>
        <Row>
-       <Col md="2" className="nav_cont"><Nav/></Col>
+       <Nav/>
        <Col md="2"></Col>
        <Col md="10" xs="12" className="contenido_general">
        <Container className="Contenido_general">
@@ -114,7 +114,7 @@ class Challenge extends Component {
           <p>{this.state.challenge[0].contenido}</p>
           <hr></hr>
        </Col>  
-<Col md="3" xs="12">
+     <Col md="3" xs="12">
             <h5 className="subtitulo_blue" >Documentos</h5>
             <Documents key="document" id={this.state.challenge[0].id}/>
         </Col>
