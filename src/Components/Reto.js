@@ -209,8 +209,6 @@ class Reto extends Component {
           <ModalHeader toggle={this.toggle.bind(this)}></ModalHeader>
           <ModalBody>
             <Challenge id={this.state.id_challenge} />
-
-
           </ModalBody>
 
       </Modal>

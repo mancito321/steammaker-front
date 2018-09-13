@@ -11,7 +11,7 @@ onChange(e) {
 render() {
  return (
             <div className="searchInput">
-                <span>Buscar</span><input 
+                <span className="retoInfoTitle">Buscar</span><input 
                   type="text" 
                   className="form-control filter"
                   placeholder="Ingresa un término de búsqueda" 

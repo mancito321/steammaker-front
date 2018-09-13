@@ -165,13 +165,17 @@ componentWillMount(){
     let ContentIn;
     let recursos;
     if (this.state.Tipo==0) {
-      ContentIn = <FormGroup id="reto">
-        <Label for="exampleFile">Contenido</Label>
-        <Input type="file" name="FileC" id="recurso-file" onChange={this.handleDropFile}/>
-        <FormText color="muted">
-          Advertencia sobre formato y peso del contenido a cargar
-        </FormText>
-      </FormGroup>
+      ContentIn = <Col md="12" xs="12">
+                                <FormGroup id="rubica">
+                                <label for="Rubrica"><div className="documents_imgR"><img src={require('../assets/attach.svg')} /></div></label>
+                                  <Label for="exampleFile">Contenido</Label>
+                                  <Input type="file" name="FileC" id='Rubrica' onChange={this.handleDropFile}/>
+                                  <FormText color="muted" className='smallForm'>
+                                    Advertencia sobre formato y peso del contenido a cargar
+                                  </FormText>
+                                </FormGroup>
+                              </Col>
+    
     }else {
       ContentIn = <FormGroup id="reto">
         <Label for="exampleFile">Enlace de contenido</Label>
@@ -203,24 +207,26 @@ componentWillMount(){
                       <Row className="margin_container">
                         <Container>
                           <Row>
-                            <Col md="6" xs="12">
+                            <Col md="12" xs="12">
                               <h4>
                                 {this.state.challenge.name}
                               </h4>
                               <p>
                                 {this.state.challenge.contenido}
-                              </p>
-                              <h4>Fecha</h4>
-                              <p>{this.state.challenge.ca}</p>
+                              </p>  
+                              <hr></hr>                           
                             </Col>
-                            <Col md="6" xs="12">
+                            <Col md="4" xs="12">
+                             <h4>Fecha</h4>
+                              <p>{this.state.challenge.ca}</p></Col>
+                            <Col md="4" xs="12">
                               <h4>
                                 Documentos
                               </h4>
                               <p>
                               <ShowDoc retoid={this.state.Retoid}/>
                               </p>
-                              <button onClick={this.toggleRecursos}>ver recursos</button>
+                              <Button className="submit_login_2" onClick={this.toggleRecursos}>ver recursos</Button>
                               {
                                 (this.state.recurso) ? <p>{this.state.challenge.recursos}</p>:<p></p>
                               }
@@ -234,6 +240,7 @@ componentWillMount(){
                             <Row>
                               <Col xs="12">
                                 <h5>Desarrollo</h5>
+                                <hr></hr>
                               </Col>
                             </Row>
                             <Row>
@@ -248,19 +255,25 @@ componentWillMount(){
                                 </Alert>
                               </Col>
                               <Col md="6" xs="12">
+
+                            <Col md="12" xs="12">
+                             <Col md="12" xs="12">
                                 <FormGroup id="reto">
+                                <label for="Reto"><div className="documents_imgR"><img src={require('../assets/attach.svg')} /></div></label>
                                   <Label for="exampleFile">Reto</Label>
-                                  <Input type="file" name="RetoS" id='solutionFile'  onChange={this.handleDropFile}/>
-                                  <FormText color="muted">
+                                  <Input type="file" name="RetoS" id="Reto"  onChange={this.handleDropFile}/>
+                                  <FormText color="muted" className='smallForm'>
                                     Advertencia sobre formato y peso del contenido a cargar
                                   </FormText>
                                 </FormGroup>
+                              </Col>                              
+                              </Col>                                
                               </Col>
                             </Row>
                           </Container>
                           <Container className="form_margin">
                             <Row>
-                              <Col md="12"><h5>Contenidos de apoyo</h5></Col>
+                              <Col md="12"><h5>Contenidos de apoyo</h5><hr></hr></Col>
                             </Row>
                             <Row>
                               <Col xs="12" md="6">
@@ -292,7 +305,7 @@ componentWillMount(){
                                                               </Row>
                               <Row>
                                 <Col md="2" xs='12' className="">
-                                  <Button className="ingresar_recurso" disabled={!this.validateParticipante()} onClick={this.add_recurso.bind(this)} >Añadir contenido</Button>
+                                  <Button className="ingresar_recurso submit_login_2" disabled={!this.validateParticipante()} onClick={this.add_recurso.bind(this)} >Añadir contenido</Button>
                                 </Col>
                               </Row>
 
@@ -317,7 +330,7 @@ componentWillMount(){
                                             <Col md="4" >{item[1]}</Col>
                                             <Col md="4" >{item[2]}</Col>
                                             <Col md="2" ></Col>
-                                            <Col md="2"  onClick={this.delete_recurso.bind(this,item)} >delete</Col>
+                                            <Col md="2"  onClick={this.delete_recurso.bind(this,item)} ><span class="eliminar_button">Eliminar</span></Col>
                                           </Row>
                                         );
                                       }.bind(this))
@@ -330,13 +343,13 @@ componentWillMount(){
                             <Container className="form_margin">
                               <Row className="center">
                                 <Col md="2">
-                                  <Button block disabled={!this.validateForm()} type="submit">
+                                  <Button className="submit_login_2" block disabled={!this.validateForm()} type="submit">
                                     Crear
                                   </Button>
                                 </Col>
                                 <Col md="2">
 
-                                    <Button onClick={this.returnBack}>
+                                    <Button className="submit_login_2" onClick={this.returnBack}>
                                       Regresar
                                     </Button>
 

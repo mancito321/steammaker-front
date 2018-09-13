@@ -67,8 +67,15 @@ li{
   list-style: none
 }
 
+.header_participants{
+  
+  height: 64px;
+  background-color: #109dff;
+  color: white;
+}
+
 .griddle-table-heading tr:first-child{
-   width: 946px;
+  
   height: 64px;
   background-color: #109dff;
   color: white;
@@ -242,17 +249,16 @@ width: 100%;
   display: inline-block;
   margin-left: 1em
 }
-.form-co
 .eliminar_button{
-    border: 1px solid black;
-    width: 100%;
-    padding-left: 5px;
-    padding-right: 5px;
+   background: #ff8106;
+    color: white;
+    padding: 0px 6px;
+    border-radius: 6px;
     cursor: pointer;
 }
 .eliminar_button:hover{
    transition:0.5s background;
-   background: #cacaca
+   background: #e47406
 }
 .App-title {
   font-size: 1.5em;
@@ -322,6 +328,10 @@ width: 100%;
   letter-spacing: normal;
   text-align: left;
   color: #424242;
+      margin-top: 1em;
+}
+.inputs{
+  width: 100%;
 }
 small{
     width: 120px;
@@ -353,7 +363,6 @@ small{
     background-color: #fafafa;
 }
 .form-control {
- width: 265px;
   height: 39px;
   border-radius: 3px;
   background-color: #ffffff;
@@ -489,6 +498,8 @@ padding-bottom: 16px;
 }
 #Reto,
 #Rubrica,
+#fotog,
+#logog,
 #Formato{
   width: 0.1px;
 	height: 0.1px;

@@ -65,28 +65,28 @@ class Challenge extends Component {
         return (
      <Row  className="margin_container retangle_cont"> 
        <Col md="12">
-         <p><h5 className="subtitulo_blue" >{this.state.challenge[0].name}</h5></p>
+         <p><h5 className="retoInfoTitle" >{this.state.challenge[0].name}</h5></p>
           <p>{this.state.challenge[0].contenido}</p>
           <hr></hr>
        </Col>  
      <Col md="3" xs="12">
-            <h5 className="subtitulo_blue" >Documentos</h5>
+            <h5 className="retoInfoTitle" >Documentos</h5>
             <Documents key="document" id={this.state.challenge[0].id}/>
         </Col>
          <Col md="3" xs="12">
-            <h5 className="subtitulo_blue" >Desarrollos</h5>
+            <h5 className="retoInfoTitle" >Desarrollos</h5>
              <Develops key="develops" id={this.state.challenge[0].id}/>
         </Col>
          <Col md="3" xs="12">         
         
-          <h5 className="subtitulo_blue" >Fecha de publicación</h5>
+          <h5 className="retoInfoTitle" >Fecha de publicación</h5>
 
         <p>{this.state.challenge[0].ca}</p>
              
         </Col> 
         <Col md="3" xs="12">         
         
-         <h5 className="subtitulo_blue" >Finalizado</h5>
+         <h5 className="retoInfoTitle" >Finalizado</h5>
 
           <p>{this.state.challenge[0].fn}</p>
              

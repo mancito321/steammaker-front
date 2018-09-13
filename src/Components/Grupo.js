@@ -174,15 +174,15 @@ class Grupo extends Component {
            <div className="image_group" style={{backgroundImage: 'url(https://cidpullzonestorage.b-cdn.net/steammakers/grupo/'+this.props.id+'/imagen.png)'}}><div className="logo_group"><img src={'https://cidpullzonestorage.b-cdn.net/steammakers/grupo/'+this.props.id+'/logo.png'}/></div></div>
           </Col>
           <Col md="4" xs="12">
-            <h5 className="subtitulo_blue">NOMBRE DEL GRUPO</h5>
+            <h5 className="retoInfoTitle">NOMBRE DEL GRUPO</h5>
             <p>{this.state.group[0].name}</p>
-            <h5 className="subtitulo_blue">PUNTAJE GENERAL</h5>
+            <h5 className="retoInfoTitle">PUNTAJE GENERAL</h5>
             <h1>{this.state.group[0].punctuation}</h1>
           </Col>
           <Col md="4" xs="12">
-            <h5 className="subtitulo_blue">MASTER TEACHER</h5>
+            <h5 className="retoInfoTitle">MASTER TEACHER</h5>
             <p>{this.state.group[0].user}</p>
-            <h5 className="subtitulo_blue">PARTICIPANTES</h5>
+            <h5 className="retoInfoTitle">PARTICIPANTES</h5>
              <ul className="participants_list">{this.state.participants[0].name.replace('[','').replace(']',' ').split(',').map(function(item, i){
             return (<li>{item}</li>)
            })}</ul>

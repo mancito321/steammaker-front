@@ -317,8 +317,7 @@ class NuevoGrupo extends Component {
                                     }
                                   </Input>
                                 </FormGroup>
-                              </Col>
-
+                              </Col>                            
                             </Row>
                             <Row>
                               <Col md="3" xs="12">
@@ -329,12 +328,12 @@ class NuevoGrupo extends Component {
                                     El nombre del grupo ya existe!
                                   </Alert>
                                 </FormGroup>
-                              </Col>
+                              </Col>                              
                             </Row>
                           </Container>
                           <Container className="form_margin">
                             <Row>
-                              <Col md="12"><h5>PARTICIPANTES  *</h5></Col>
+                              <Col md="12"><h5 className="retoInfoTitle">PARTICIPANTES  *</h5></Col>
                             </Row>
                             <Row>
                               <Col md="3" xs="12">
@@ -342,7 +341,7 @@ class NuevoGrupo extends Component {
                                   <Label>Nombre Completo</Label>
                                   <Input  type="text"  id="participante"  onChange={this.handleChange.bind(this)}/>
                                 </FormGroup>
-                                <Col md="12" className="center"> <Button className="ingresar_participante" disabled={!this.validateFormP()} onClick={this.add_participante.bind(this)} >ingresar</Button></Col>
+                                <Col md="12" className="center"> <Button className="ingresar_participante submit_login_2" disabled={!this.validateFormP()} onClick={this.add_participante.bind(this)} >ingresar</Button></Col>
                               </Col>
                               <Col md="9" xs="12">
                                 <Col md="12"><div className="header_participants">
@@ -357,7 +356,7 @@ class NuevoGrupo extends Component {
                                       return (
                                         <Row key={'Row'+i}>
                                           <Col md="10" key={item}>{item}</Col>
-                                          <Col md="2" key={i} onClick={this.delete_participante.bind(this,item)} ><span class="eliminar_button">Eliminar</span></Col>
+                                          <Col md="2" key={i} onClick={this.delete_participante.bind(this,item)} ><p class="eliminar_button eliminar">Eliminar</p></Col>
                                         </Row>
                                       );
                                     }.bind(this))
@@ -368,47 +367,40 @@ class NuevoGrupo extends Component {
                           </Container>
                           <Container className="form_margin">
                             <Row>
-                              <Col md="6">
-                                <FormGroup id="participantes">
-                                  <Label for="exampleFile">Foto de los participantes *</Label>
-                                  <Input type="file" name="fotog"  onChange={this.handleDropFile} />
 
-                                  <FormText color="muted">
+                            <Col md="4" xs="7">
+                                <FormGroup id="rubica">
+                                <label for="Rubrica"><div className="documents_imgR"><img src={require('../assets/attach.svg')} /></div></label>
+                                  <Label for="exampleFile">Foto de los participantes </Label>
+                                  <Input type="file" name="fotog" id='fotog' onChange={this.handleDropFile}/>
+                                  <FormText color="muted" className='smallForm'>
                                     Advertencia sobre formato y peso del contenido a cargar
                                   </FormText>
-                                  <Alert color="danger" isOpen={this.state.fotogVal}>
-                                    Revisa el archivo subido. Debe ser una imágen
-                                  </Alert>
                                 </FormGroup>
                               </Col>
-                            </Row>
-                            <Row>
-                              <Col md="6">
-                                <FormGroup id="logo">
-                                  <Label for="exampleFile">Logo del grupo *</Label>
-                                  <Input type="file" name="logog"  onChange={this.handleDropFile} />
-                                  <FormText color="muted">
+
+                              <Col md="4" xs="7">
+                                <FormGroup id="formato">
+                                <label for="Formato"><div className="documents_imgR"><img src={require('../assets/attach.svg')} /></div></label>
+                                  <Label for="exampleFile">Logo del grupo </Label>
+                                  <FormText color="muted" className='smallForm'>
                                     Advertencia sobre formato y peso del contenido a cargar
                                   </FormText>
-                                  <Alert color="danger" isOpen={this.state.logogVal}>
-                                    Revisa el archivo subido. Debe ser una imágen
-                                  </Alert>
+                                  <Input type="file" name="logog" id="Formato" onChange={this.handleDropFile}/>
+
                                 </FormGroup>
-                              </Col>
-                            </Row>
+                              </Col>                                                        
+                            </Row>                            
                           </Container>
                           <Container className="form_margin">
                             <Row>
-                              <Col md="12"><h5>ACCESO</h5></Col>
+                              <Col md="12"><h5 className="retoInfoTitle">ACCESO</h5></Col>
                             </Row>
                             <Row>
                               <Col md="3" xs="12">
                                 <FormGroup id="user">
                                   <Label>Usuario de grupo *</Label>
-                                  <Input  type="text"  id="usuario" onChange={this.handleChange.bind(this)} />
-                                  <FormText color="muted">
-                                    Caracteristicas del nombre de usuario
-                                  </FormText>
+                                  <Input  type="text"  id="usuario" onChange={this.handleChange.bind(this)} />                             
                                   <Alert color="danger" isOpen={this.state.nameVal}>
                                     El usuario del grupo ya existe!
                                   </Alert>
@@ -420,20 +412,16 @@ class NuevoGrupo extends Component {
                                 <FormGroup id="password">
                                   <Label>Clave de grupo *</Label>
                                   <Input  type="password" id="password" value={this.state.password} onChange={this.handleChange.bind(this)} />
-                                  <FormText color="muted">
-                                    Caracteristicas de la clave de grupo
-                                  </FormText>
+                                
                                 </FormGroup>
                               </Col>
                               <Col md="3" xs="12">
                                 <FormGroup id="password">
                                   <Label>Confirmar clave de grupo *</Label>
-                                  <Input  type="password" id="repassword" value={this.state.Repassword} onChange={this.handleChange.bind(this)} />
-                                  <FormText color="muted">
+                                  <Input  type="password" id="repassword" value={this.state.Repassword} onChange={this.handleChange.bind(this)} />                                 
                                    <Alert color="danger" isOpen={this.state.error}>
                                     Las contraseñas no coiciden!
-                                  </Alert>
-                                  </FormText>
+                                  </Alert>                               
                                 </FormGroup>
                               </Col>
                             </Row>
@@ -441,7 +429,7 @@ class NuevoGrupo extends Component {
                           <Container className="form_margin">
                             <Row className="center">
                               <Col md="2">
-                                <Button block disabled={!this.validateForm()} type="submit" >
+                                <Button className="submit_login_2" block disabled={!this.validateForm()} type="submit" >
                                   Crear
                                 </Button>
                               </Col>

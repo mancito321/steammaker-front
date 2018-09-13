@@ -219,14 +219,14 @@ handleButtonChange(event){
        <Row  className="margin_container retangle_cont reactangle">
        
         <Col md="6">
-        <h5 className="subtitulo_blue">Fecha de publicación</h5>
+        <h5 className="retoInfoTitle">Fecha de publicación</h5>
         <p>{this.state.challenge[0].ca}</p>
         </Col>
         <Col md="6">
-        <h5 className="subtitulo_blue">{this.state.challenge[0].name}</h5>
+        <h5 className="retoInfoTitle">{this.state.challenge[0].name}</h5>
         <Button   className="submit_login_2" onClick={this.toggle}>Ver reto</Button>
         </Col>
-        <Col md="12">  <h5 className="subtitulo_blue">Ver desarrollo</h5>
+        <Col md="12">  <h5 className="retoInfoTitle">Ver desarrollo</h5>
         <Button   className="submit_login_2" onClick={this.modalSol.bind(this)}>Ver reto</Button>
         <hr></hr>
       </Col>  
@@ -238,7 +238,7 @@ handleButtonChange(event){
            if (context.state==1) {
              return(
                <Col md="4" className={this.state.edit}>
-               <h5 className="subtitulo_blue">Puntuar reto</h5>
+               <h5 className="retoInfoTitle">Puntuar reto</h5>
                <Row>
                  <Col md="8">Formato<p className="red">{this.state.valor1e}</p></Col>
                  <Col md="4">
@@ -276,11 +276,11 @@ handleButtonChange(event){
          }}
         </ChallengeCon>
         <Col md="4">
-        <h5 className="center subtitulo_blue">Puntaje general</h5>
+        <h5 className="center retoInfoTitle">Puntaje general</h5>
         <h1 className="center">{this.state.punctuation}</h1>
         </Col>
         <Col md="4">
-         <h5 className="center subtitulo_blue">Puntaje por area</h5>
+         <h5 className="center retoInfoTitle">Puntaje por area</h5>
 <RadarChart outerRadius={90} width={420} height={250} data={[
     { subject: 'Formato', A: this.state.valor1p,  fullMark: 15 },
     { subject: 'Big Art', A: this.state.valor2p, fullMark: 30 },

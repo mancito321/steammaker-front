@@ -208,31 +208,31 @@ class NuevoReto extends Component {
                           </Container>
                           <Container className="form_margin">
                             <Row>
-                              <Col md="12"><h5>RECURSOS</h5></Col>
+                              <Col md="12"><h5 className="retoInfoTitle">RECURSOS</h5></Col>
                             </Row>
                             <Row>
                               <Col xs="12" md="6">
                                 <FormGroup id="name">
                                   <Label>Nombre del recurso</Label>
-                                  <Input type="text" name="RecursoName" id="recurso-name" placeholder="Ingresa el nombre del recurso" onChange={this.handleChange.bind(this)}/>
+                                  <Input className="inputs" type="text" name="RecursoName" id="recurso-name" placeholder="Ingresa el nombre del recurso" onChange={this.handleChange.bind(this)}/>
                                 </FormGroup>
                               </Col>
                               <Col xs="12">
                                 <FormGroup>
                                   <Label for="exampleText">Descripción del recurso</Label>
-                                  <Input type="textarea"  name="RecursoText" id="recurso-text" onChange={this.handleChange.bind(this)} />
+                                  <Input className="inputs" type="textarea"  name="RecursoText" id="recurso-text" onChange={this.handleChange.bind(this)} />
                                   </FormGroup>
                                 </Col>
                                 <Col md="6" xs="12">
                                   <FormGroup id="name">
                                     <Label>Enlace del recurso</Label>
-                                    <Input type="text" id="recurso-url" name="RecursoURL" placeholder="http://" onChange={this.handleChange.bind(this)}/>
+                                    <Input className="inputs" type="text" id="recurso-url" name="RecursoURL" placeholder="http://" onChange={this.handleChange.bind(this)}/>
                                   </FormGroup>
                                 </Col>
                               </Row>
                               <Row>
                                 <Col md="2" xs='12' className="">
-                                  <Button className="ingresar_recurso" disabled={!this.validateParticipante()} onClick={this.add_recurso.bind(this)} >Guardar</Button>
+                                  <Button className="ingresar_recurso submit_login" disabled={!this.validateParticipante()} onClick={this.add_recurso.bind(this)} >Guardar</Button>
                                 </Col>
                               </Row>
 
@@ -257,7 +257,7 @@ class NuevoReto extends Component {
                                             <Col md="4" key={i}>{item[0]}</Col>
                                             <Col md="4" key={i}>{item[1]}</Col>
                                             <Col md="2" key={i}>{item[2]}</Col>
-                                            <Col md="2" className="linkDelete"key={i} onClick={this.delete_recurso.bind(this,item)} >delete</Col>
+                                            <Col md="2" className="linkDelete"key={i} onClick={this.delete_recurso.bind(this,item)} ><span class="eliminar_button">Eliminar</span></Col>
                                           </Row>
                                         );
                                       }.bind(this))
@@ -269,7 +269,7 @@ class NuevoReto extends Component {
                              <Container className="form_margin">
                               <Row>
                                 <Col xs="12">
-                                  <h5>ESTADO INICIAL DEL RETO</h5>
+                                  <h5 className="retoInfoTitle">ESTADO INICIAL DEL RETO</h5>
                                   <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
                                 </Col>
                                 <Col xs="12"> <CustomInput type="checkbox" onChange={this.handleCheckbox.bind(this)} id="exampleCustomCheckbox" label="Activar" /></Col>
@@ -279,7 +279,7 @@ class NuevoReto extends Component {
                             <Container className="form_margin">
                               <Row className="center">
                                 <Col md="2">
-                                  <Button block disabled={!this.validateForm()} type="submit">
+                                  <Button className="submit_login" block disabled={!this.validateForm()} type="submit">
                                     Crear
                                   </Button>
                                 </Col>
