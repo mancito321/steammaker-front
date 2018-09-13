@@ -146,19 +146,19 @@ class NuevoReto extends Component {
                         <form onSubmit={this.handleSubmit}>
                           <Container>
                             <Row>
-                              <Col xs="12">
+                              <Col xs="12" className='retoInfoTitle'>
                                 <h5>INFORMACIÓN DEL RETO</h5>
                               </Col>
                             </Row>
                             <Row>
                               <Col md="6" xs="12">
-                                <FormGroup id="name">
-                                  <Label>Nombre del reto *</Label>
+                                <FormGroup id="name" className='formName'>
+                                  <Label>Nombre del reto</Label>
                                   <Input type="text" id="name" name="NameReto" placeholder="Ingresa el nombre del reto" onChange={this.handleChange.bind(this)}/>
                                 </FormGroup>
                               </Col>
                               <Col xs="12">
-                                <FormGroup>
+                                <FormGroup className='formDesc'>
                                   <Label for="exampleText">Descripción del reto</Label>
                                   <Input type="textarea" name="TextReto" id="exampleText" onChange={this.handleChange.bind(this)}/>
                                 </FormGroup>
@@ -167,40 +167,41 @@ class NuevoReto extends Component {
                           </Container>
                           <Container className="form_margin">
                             <Row>
-                              <Col xs="12">
+                              <Col xs="12" className='retoInfoTitle'>
                                 <h5>DOCUMENTACIÓN DEL RETO</h5>
                               </Col>
-                            </Row>
-                            <Row>
-                              <Col md="6" xs="12">
+
+                              <Col md="4" xs="7">
                                 <FormGroup id="reto">
-                                  <Label for="exampleFile">Reto *</Label>
-                                  <Input type="file" name="Reto"  onChange={this.handleDropFile}/>
-                                  <FormText color="muted">
+                                <label for="Reto"><div className="documents_imgR"><img src={require('../assets/attach.svg')} /></div></label>
+                                  <Label for="exampleFile">Reto</Label>
+                                  <Input type="file" name="Reto" id="Reto"  onChange={this.handleDropFile}/>
+                                  <FormText color="muted" className='smallForm'>
                                     Advertencia sobre formato y peso del contenido a cargar
                                   </FormText>
                                 </FormGroup>
                               </Col>
-                            </Row>
-                            <Row>
-                              <Col md="6" xs="12">
+
+                              <Col md="4" xs="7">
                                 <FormGroup id="rubica">
-                                  <Label for="exampleFile">Rubrica *</Label>
-                                  <Input type="file" name="Rubrica"  onChange={this.handleDropFile}/>
-                                  <FormText color="muted">
+                                <label for="Rubrica"><div className="documents_imgR"><img src={require('../assets/attach.svg')} /></div></label>
+                                  <Label for="exampleFile">Rubrica</Label>
+                                  <Input type="file" name="Rubrica" id='Rubrica' onChange={this.handleDropFile}/>
+                                  <FormText color="muted" className='smallForm'>
                                     Advertencia sobre formato y peso del contenido a cargar
                                   </FormText>
                                 </FormGroup>
                               </Col>
-                            </Row>
-                            <Row>
-                              <Col md="6" xs="12">
+
+                              <Col md="4" xs="7">
                                 <FormGroup id="formato">
-                                  <Label for="exampleFile">Formato de planeación *</Label>
-                                  <Input type="file" name="Formato" onChange={this.handleDropFile}/>
-                                  <FormText color="muted">
+                                <label for="Formato"><div className="documents_imgR"><img src={require('../assets/attach.svg')} /></div></label>
+                                  <Label for="exampleFile">Formato de planeación</Label>
+                                  <FormText color="muted" className='smallForm'>
                                     Advertencia sobre formato y peso del contenido a cargar
                                   </FormText>
+                                  <Input type="file" name="Formato" id="Formato" onChange={this.handleDropFile}/>
+
                                 </FormGroup>
                               </Col>
                             </Row>

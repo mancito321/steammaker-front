@@ -24,7 +24,7 @@ z-index: 1;
   border-radius: 10px;
   background-color: #ffffff;
   box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.1);
- 
+
 }
 ul{
   padding-left: 14px;
@@ -48,13 +48,26 @@ a:hover{
   width: 15px;
   height: 15px;
 }
+.documents_imgR{
+    width: 50px;
+  height: 50px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+   border-radius: 25px;
+   margin-right: 5px;
+   cursor: pointer;
+}
+.documents_imgR img{
+  width: 50px;
+  height: 50px;
+}
 li{
   list-style: none
 }
 
 .griddle-table-heading tr:first-child{
    width: 946px;
-  height: 64px; 
+  height: 64px;
   background-color: #109dff;
   color: white;
 }
@@ -88,18 +101,18 @@ body{
  background: #fafafa;
  background-image: url(assets/mountain_gray_bg.png)!important;
  background-repeat: repeat-x;
- background-position-y:100% 
+ background-position-y:100%
 }
 .login_body{
     background: #109dff;
-    background-image: url(assets/star.svg);  
+    background-image: url(assets/star.svg);
     background-repeat: repeat-x;
     position: absolute;
     width: 100%;
     height: 100%;
 }
 .mountain{
-    background-image: url(assets/mountains_bg.png);  
+    background-image: url(assets/mountains_bg.png);
     background-repeat: repeat-x;
     background-position-y: 100%;
     position: absolute;
@@ -107,7 +120,7 @@ body{
     height: 100%;
 }
 .trees{
-  background-image: url(assets/tree_bg.png);  
+  background-image: url(assets/tree_bg.png);
     background-repeat: repeat-x;
     background-position-y: 100%;
     position: absolute;
@@ -123,7 +136,7 @@ body{
         display: inline-block;
     width: 90%;
 }
-.Login .form-control:focus{ 
+.Login .form-control:focus{
     outline: 0;
     -webkit-box-shadow:0 1px 9px 0 rgba(255, 255, 255,0);
        box-shadow: 0 1px 9px 0 rgba(255, 255, 255, 0);
@@ -136,7 +149,7 @@ body{
  border-color: #ff8107;
      margin: 66px auto;
 }
-.submit_login:hover { 
+.submit_login:hover {
   background-color: #e27409;
  border-color: #e27409;
 }
@@ -145,12 +158,12 @@ body{
        background-color: #ff8107;
     border-color: #ff8107;
 }
-.Login .form-group{  
+.Login .form-group{
     border-bottom: solid 1px #bdbdbd;
 
 }
 
-.Login{  
+.Login{
 width: 100%;
     height: 100%;
     max-width: 512px;
@@ -163,12 +176,12 @@ width: 100%;
     -webkit-box-shadow: 0 1px 9px 0 rgba(0, 0, 0, 0.3);
     box-shadow: 0 1px 9px 0 rgba(0, 0, 0, 0.3);
 }
-.Login .logo_login{  
+.Login .logo_login{
     top: -89px;
     width: 71%;
-    text-align: center;   
+    text-align: center;
     position: absolute;
-  
+
 }
 .Login .logo_login img{
   width: 100%;
@@ -284,7 +297,7 @@ width: 100%;
 .subtitulo{
   width: 126px;
   height: 34px;
-  font-family: FiraSans;
+  font-family: 'Fira Sans', sans-serif;
   font-size: 24px;
   font-weight: 900;
   font-style: normal;
@@ -297,7 +310,7 @@ width: 100%;
 small{
     width: 120px;
   height: 20px;
-  font-family: OpenSans;
+  font-family: 'Open Sans', sans-serif;
   font-size: 15px;
   font-weight: normal;
   font-style: normal;
@@ -310,7 +323,7 @@ small{
 .titulo{
    width: 119px;
   height: 53px;
-  font-family: FiraSans;
+  font-family: 'Fira Sans', sans-serif;
   font-size: 36px;
   font-weight: 900;
   font-style: normal;
@@ -320,8 +333,8 @@ small{
   text-align: left;
   color: #424242;
 }
-.ver_table:hover{  
-    background-color: #fafafa;    
+.ver_table:hover{
+    background-color: #fafafa;
 }
 .form-control {
  width: 265px;
@@ -437,6 +450,40 @@ h5{}
 .recharts-default-legend{
   display: none
 }
+.retoInfoTitle{
+  font-family: 'Fira Sans', sans-serif !important;
+color: #109dff;
+border-bottom: solid 1px #e0e0e0;
+margin-bottom: 24px;
+padding-bottom: 16px;
+}
+.formName input{
+  width: 100%;
+}
+.formName label{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bolder;
+}
+.formDesc textarea{
+  width: 100%;
+}
+.formDesc label{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bolder;
+}
+#Reto,
+#Rubrica,
+#Formato{
+  width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.smallForm{
+  width: 100%;
+}
 /*END NAV*/
 
 /*Footer*/
@@ -474,8 +521,8 @@ footer{
 .logo{
   display: none;
 }
-.Login .logo_login{  
-    width: 62%; 
-  
+.Login .logo_login{
+    width: 62%;
+
 }
 }

@@ -1,3 +1,4 @@
+
 .Mask {
   width: 265px;
   height: 1024px;
@@ -76,6 +77,8 @@
 .VertMenu a {
   color: #fff !important;
   font-weight: 900;
+  font-size: 20px;
+  font-family: 'Fira Sans', sans-serif;
 }
 .menuItem{
   padding-left: 16px;
