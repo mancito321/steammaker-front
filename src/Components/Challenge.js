@@ -4,7 +4,9 @@ import { Container, Row, Col,Button, FormGroup, Input , Label } from "reactstrap
 import Nav from './Nav'
 import Footer from './Footer'
 import Documents from './Documents'
+import { Link } from 'react-router-dom'
 import Develops from './Develops'
+import Reto from './Reto'
 import {apiTesxt} from './apiConf'
 import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, LabelList, Legend} from 'recharts';
 import { ChallengeCon } from './ChallengeContext';
@@ -20,6 +22,7 @@ class Challenge extends Component {
       session:sessionchk,
       challenge : [],
       permission:"",
+      reto:false,
       group:[]
     };
   }
@@ -40,9 +43,21 @@ class Challenge extends Component {
      });
 
   }
+  retos(){
+   this.setState({
+          reto: true
+         });
+  }
+   handler(e) {
+    e.preventDefault()
+    this.setState({
+      reto: false
+    })
+  }
+
   componentWillMount(){
      let session=JSON.parse(sessionStorage.getItem('mySteamM'))
-     axios.get('http://api-sm.cid.edu.co/api/auth/me',{
+     axios.get(apiTesxt+'/api/auth/me',{
        headers: {
            'content-type': 'multipart/form-data',
            'x-access-token':session.token
@@ -60,7 +75,7 @@ class Challenge extends Component {
       .then(()=> {
      console.log(this.state.permission);
       });
-      axios.get('http://api-sm.cid.edu.co/group/group/limit')
+      axios.get(apiTesxt+'/group/group/limit')
       .then((response)=>  {
          this.setState({
           group: response.data
@@ -72,6 +87,7 @@ class Challenge extends Component {
         .then(()=> {
        // always executed
         });
+        console.log(this.state.group.length)
   }
 
   render() {
@@ -80,6 +96,18 @@ class Challenge extends Component {
     if (this.state.session) {
       return <Redirect to='/login' />
     }else {
+      if(this.state.reto){
+      return(
+          <ChallengeCon>
+            {context => {            
+               return(
+                 <Reto id={this.state.challenge[0].id} grupo={context.grupo} handler={this.handler.bind(this)}/>
+               )
+           }}
+          </ChallengeCon>
+
+          )
+      }else{
       try{
         console.log('this is challenge');
         return (
@@ -110,7 +138,7 @@ class Challenge extends Component {
        <Col md="12" style={{marginBottom:'10px'}}><h4 className="subtitulo">Último reto</h4></Col>
        <Row  className="margin_container retangle_cont"> 
        <Col md="12">
-         <p><h5 className="retoInfoTitle" >{this.state.challenge[0].name}</h5></p>
+         <p><h5 className="retoInfoTitle" >{this.state.challenge[0].name}<span><Button className="submit_login_2 ver_reto" onClick={this.retos.bind(this)}>Ver reto</Button></span></h5></p>
           <p>{this.state.challenge[0].contenido}</p>
           <hr></hr>
        </Col>  
@@ -140,8 +168,15 @@ class Challenge extends Component {
            
       </Row>
       <Row>
-     <Col md="12" className="line">  <h2 className="titulo">Ranking</h2></Col>
-     <Col md="12" >  <BarChart width={1000} height={300} data={this.state.group} margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+     <Col md="12" className="line">  <h2 className="titulo">Ranking</h2><h4 className="subtitulo">Observa a continuación los puntajes y las posiciones de los grupos</h4></Col>
+     <Col md="12" >   {this.state.group.length == 0 ? (
+        <div>
+        <h6>Aún no hay grupos, ¿Qué tal si creas uno?</h6>
+        <p><Link to="/nuevo_grupo" ><Button className="submit_login_2">Crear un grupo</Button></Link></p>
+        </div>
+        
+        ) : (
+        <BarChart width={1000} height={300} data={this.state.group} margin={{top: 5, right: 30, left: 20, bottom: 5}}>
        <CartesianGrid strokeDasharray="3 3"/>
        <XAxis dataKey="name"/>
        <YAxis/>
@@ -149,7 +184,8 @@ class Challenge extends Component {
        <Legend />
        <Bar dataKey="puntos" fill="#ffbb11" minPointSize={5}>
         </Bar>
-      </BarChart></Col>
+      </BarChart>
+        )}</Col>
 
       </Row>
       </Row>
@@ -190,15 +226,24 @@ class Challenge extends Component {
            <h1>NO HAY RETOS!!</h1>
           </Row>
           <Row  className="margin_container">
-        <Col md="12" className="line">  <BarChart width={1000} height={300} data={this.state.group} margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+       <Col md="12">
+         {this.state.group.length == 0 ? (
+        <div>
+        <h6>Aún no hay grupos, ¿Qué tal si creas uno?</h6>
+        <p><Link to="/nuevo_grupo" ><Button className="submit_login_2">Crear un grupo</Button></Link></p>
+        </div>
+        ) : (
+        <BarChart width={1000} height={300} data={this.state.group} margin={{top: 5, right: 30, left: 20, bottom: 5}}>
        <CartesianGrid strokeDasharray="3 3"/>
        <XAxis dataKey="name"/>
        <YAxis/>
        <Tooltip/>
        <Legend />
-       <Bar dataKey="puntos" fill="#8884d8" minPointSize={5}>
+       <Bar dataKey="puntos" fill="#ffbb11" minPointSize={5}>
         </Bar>
-      </BarChart></Col>
+      </BarChart>
+        )}
+       </Col>
           </Row>
 
 
@@ -210,6 +255,7 @@ class Challenge extends Component {
          </Container>
           <footer><Footer/></footer></div>
         );
+      }
       }
     }
   }

@@ -227,7 +227,7 @@ handleButtonChange(event){
         <Button   className="submit_login_2" onClick={this.toggle}>Ver reto</Button>
         </Col>
         <Col md="12">  <h5 className="retoInfoTitle">Ver desarrollo</h5>
-        <Button   className="submit_login_2" onClick={this.modalSol.bind(this)}>Ver reto</Button>
+        <Button   className="submit_login_2" onClick={this.modalSol.bind(this)}>Ver Desarrollo</Button>
         <hr></hr>
       </Col>  
 

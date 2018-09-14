@@ -240,7 +240,7 @@ class Reto extends Component {
          <Col xs="12">
            <ChallengeCon>
              {context => {
-                if (context.state==1) {
+                if (context.state==2) {
                   return(
                         <Button onClick={this.handleDeve}   className="submit_login" disabled={this.state.boton} >Desarrollo</Button>
                   )

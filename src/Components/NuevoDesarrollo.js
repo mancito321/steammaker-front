@@ -119,7 +119,7 @@ componentWillMount(){
     console.log(config);
     axios.post(apiTesxt+'/api/auth/solucionreto', formData,config)
     .then( (response) =>{
-      document.getElementById('solutionFile').value = null;
+      document.getElementById('Reto').value = null;
       this.setState({
         RetoS:null,
         Contenido:[]
@@ -127,7 +127,7 @@ componentWillMount(){
       this.setState({ successM: true });
       setTimeout(()=>{ window.location.href ="/retos" }, 2000);
     })
-    .catch(function (error) {
+    .catch((error) => {
       console.log(error);
       this.setState({ failM: true });
     });
@@ -166,10 +166,10 @@ componentWillMount(){
     let recursos;
     if (this.state.Tipo==0) {
       ContentIn = <Col md="12" xs="12">
-                                <FormGroup id="rubica">
-                                <label for="Rubrica"><div className="documents_imgR"><img src={require('../assets/attach.svg')} /></div></label>
+                                <FormGroup id="contenido">
+                                <label for="Contenido">{this.state.fileC != null ? (<div className="documents_imgR background_yes" ><img src={require('../assets/attach.svg')} /></div>):(<div className="documents_imgR"><img src={require('../assets/attach.svg')} /></div>)}</label>
                                   <Label for="exampleFile">Contenido</Label>
-                                  <Input type="file" name="FileC" id='Rubrica' onChange={this.handleDropFile}/>
+                                  <Input type="file" name="fileC" id='Contenido' onChange={this.handleDropFile}/>
                                   <FormText color="muted" className='smallForm'>
                                     Advertencia sobre formato y peso del contenido a cargar
                                   </FormText>
@@ -179,7 +179,7 @@ componentWillMount(){
     }else {
       ContentIn = <FormGroup id="reto">
         <Label for="exampleFile">Enlace de contenido</Label>
-        <Input type="text" placeholder="http://" name="FileC" id="recurso-file" onChange={this.handleChange.bind(this)}/>
+        <Input type="text" placeholder="http://" name="FileC" id="file_link" onChange={this.handleChange.bind(this)}/>
       </FormGroup>
     }
     if (this.state.recurso) {
@@ -259,9 +259,9 @@ componentWillMount(){
                             <Col md="12" xs="12">
                              <Col md="12" xs="12">
                                 <FormGroup id="reto">
-                                <label for="Reto"><div className="documents_imgR"><img src={require('../assets/attach.svg')} /></div></label>
+                                <label for="Reto">{this.state.RetoS != null ? (<div className="documents_imgR background_yes" ><img src={require('../assets/attach.svg')} /></div>):(<div className="documents_imgR"><img src={require('../assets/attach.svg')} /></div>)}</label>
                                   <Label for="exampleFile">Reto</Label>
-                                  <Input type="file" name="RetoS" id="Reto"  onChange={this.handleDropFile}/>
+                                  <Input type="file" name="RetoS" id="Reto" onChange={this.handleDropFile}/>
                                   <FormText color="muted" className='smallForm'>
                                     Advertencia sobre formato y peso del contenido a cargar
                                   </FormText>
@@ -393,7 +393,13 @@ componentWillMount(){
       this.setState({FileC:null,NombreC:"",DescC: ""})
       document.getElementById('recurso-name').value = "";
       document.getElementById('recurso-text').value = "";
-      document.getElementById('recurso-file').value = null;
+      if(document.getElementById('ie').value == 1){
+        document.getElementById('file_link').value = null;
+      }else{
+        document.getElementById('Contenido').value = null;
+      }
+      
+      
     }
 
     delete_recurso(i) {

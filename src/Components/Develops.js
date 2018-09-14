@@ -29,6 +29,7 @@ class Documents extends Component {
      })
      .then(()=> {
     // always executed
+    console.log()
      });
   }
 
@@ -41,7 +42,7 @@ class Documents extends Component {
          <Row className="develops">
          {
            this.state.develops.map(item=>{
-             return <Col md="6" key={item.id.toString()}><p><b>{item.group_name}</b><br></br><small>{item.ca}</small></p></Col>
+             return <h1>{item.desarrollos}</h1>
            })
         }
 

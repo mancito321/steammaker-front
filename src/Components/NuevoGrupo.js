@@ -45,8 +45,10 @@ class NuevoGrupo extends Component {
     });
   }
   validateForm() {
-    if (this.state.franchise>0 && this.state.institutions.length>0 && this.state.name.length>0 && this.state.participantes.length>0  && this.state.usuario.length>0 && this.state.password.length>0 && (this.state.repassword === this.state.password)) {
+    if (this.state.franchise>0 && this.state.institutions.length>0 && this.state.name.length>0 && this.state.participantes.length>0  && this.state.usuario.length>0 && this.state.password.length>0 && (this.state.repassword === this.state.password) && this.state.fotog !=null) {
       return true
+    }else{
+      return false
     }
   }
   validateFormP() {
@@ -140,7 +142,7 @@ class NuevoGrupo extends Component {
       this.setState({
         error_name_2: response.data[0]['contador']
       });     
-     console.log(this.state.nameVal)
+     console.log(this.state.nameVal2)
 
     })
     .catch((error)=>  {
@@ -168,7 +170,7 @@ class NuevoGrupo extends Component {
     })
     .then(()=> {
     });
-
+  console.log(this.state.logog != null)
 
 
   }
@@ -367,29 +369,31 @@ class NuevoGrupo extends Component {
                           </Container>
                           <Container className="form_margin">
                             <Row>
-
                             <Col md="4" xs="7">
-                                <FormGroup id="rubica">
-                                <label for="Rubrica"><div className="documents_imgR"><img src={require('../assets/attach.svg')} /></div></label>
+
+                              <FormGroup id="fotog">
+                                <label for="Fotog"> {this.state.fotog != null ? (<div className="documents_imgR background_yes" ><img src={require('../assets/attach.svg')} /></div>):(<div className="documents_imgR"><img src={require('../assets/attach.svg')} /></div>)}</label>
                                   <Label for="exampleFile">Foto de los participantes </Label>
-                                  <Input type="file" name="fotog" id='fotog' onChange={this.handleDropFile}/>
                                   <FormText color="muted" className='smallForm'>
                                     Advertencia sobre formato y peso del contenido a cargar
                                   </FormText>
+                                  <Input type="file" accept="image/*" name="fotog" id="Fotog" onChange={this.handleDropFile}/>
                                 </FormGroup>
-                              </Col>
+                              </Col> 
 
                               <Col md="4" xs="7">
-                                <FormGroup id="formato">
-                                <label for="Formato"><div className="documents_imgR"><img src={require('../assets/attach.svg')} /></div></label>
+                                <FormGroup id="logog">
+                                <label for="Logog">
+                                {this.state.logog != null ? (<div className="documents_imgR background_yes" ><img src={require('../assets/attach.svg')} /></div>):(<div className="documents_imgR"><img src={require('../assets/attach.svg')} /></div>)}
+                                </label>
                                   <Label for="exampleFile">Logo del grupo </Label>
                                   <FormText color="muted" className='smallForm'>
                                     Advertencia sobre formato y peso del contenido a cargar
                                   </FormText>
-                                  <Input type="file" name="logog" id="Formato" onChange={this.handleDropFile}/>
-
+                                  <Input type="file" accept="image/*" name="logog" id="Logog" onChange={this.handleDropFile}/>
                                 </FormGroup>
-                              </Col>                                                        
+                              </Col> 
+
                             </Row>                            
                           </Container>
                           <Container className="form_margin">
@@ -401,7 +405,7 @@ class NuevoGrupo extends Component {
                                 <FormGroup id="user">
                                   <Label>Usuario de grupo *</Label>
                                   <Input  type="text"  id="usuario" onChange={this.handleChange.bind(this)} />                             
-                                  <Alert color="danger" isOpen={this.state.nameVal}>
+                                  <Alert color="danger" isOpen={this.state.nameVal2}>
                                     El usuario del grupo ya existe!
                                   </Alert>
                                 </FormGroup>
@@ -477,10 +481,12 @@ class NuevoGrupo extends Component {
     delete_participante(i){
       var array = this.state.participantes;
       var index = array.indexOf(i);
-      delete array[index];
+      array.splice(index, 1);
+      // delete array[index];     
       this.setState(
         this.state
       )
+       console.log(this.state.participantes.length)
     }
   }
 

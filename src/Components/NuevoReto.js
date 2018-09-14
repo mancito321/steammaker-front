@@ -173,7 +173,7 @@ class NuevoReto extends Component {
 
                               <Col md="4" xs="7">
                                 <FormGroup id="reto">
-                                <label for="Reto"><div className="documents_imgR"><img src={require('../assets/attach.svg')} /></div></label>
+                                <label for="Reto">{this.state.Reto != null ? (<div className="documents_imgR background_yes" ><img src={require('../assets/attach.svg')} /></div>):(<div className="documents_imgR"><img src={require('../assets/attach.svg')} /></div>)}</label>
                                   <Label for="exampleFile">Reto</Label>
                                   <Input type="file" name="Reto" id="Reto"  onChange={this.handleDropFile}/>
                                   <FormText color="muted" className='smallForm'>
@@ -184,7 +184,7 @@ class NuevoReto extends Component {
 
                               <Col md="4" xs="7">
                                 <FormGroup id="rubica">
-                                <label for="Rubrica"><div className="documents_imgR"><img src={require('../assets/attach.svg')} /></div></label>
+                                <label for="Rubrica">{this.state.Rubrica != null ? (<div className="documents_imgR background_yes" ><img src={require('../assets/attach.svg')} /></div>):(<div className="documents_imgR"><img src={require('../assets/attach.svg')} /></div>)}</label>
                                   <Label for="exampleFile">Rubrica</Label>
                                   <Input type="file" name="Rubrica" id='Rubrica' onChange={this.handleDropFile}/>
                                   <FormText color="muted" className='smallForm'>
@@ -195,7 +195,7 @@ class NuevoReto extends Component {
 
                               <Col md="4" xs="7">
                                 <FormGroup id="formato">
-                                <label for="Formato"><div className="documents_imgR"><img src={require('../assets/attach.svg')} /></div></label>
+                                <label for="Formato">{this.state.Formato != null ? (<div className="documents_imgR background_yes" ><img src={require('../assets/attach.svg')} /></div>):(<div className="documents_imgR"><img src={require('../assets/attach.svg')} /></div>)}</label>
                                   <Label for="exampleFile">Formato de planeación</Label>
                                   <FormText color="muted" className='smallForm'>
                                     Advertencia sobre formato y peso del contenido a cargar
