@@ -118,8 +118,14 @@ class Group extends Component {
        </Col>
        <Row  className="margin_container">
    <Col md="12" className="table_cont">
-     <Griddle components={{Layout: NewLayout, Filter }} data={this.state.group} plugins={[plugins.LocalPlugin]}>
-    <RowDefinition>
+   {this.state.group.length == 0 ? (
+        <div>
+        <h6>Aún no hay grupos, ¿Qué tal si creas uno?</h6>
+        <p><Link to="/nuevo_grupo" ><Button className="submit_login_2">Crear un grupo</Button></Link></p>
+        </div>
+        ) : (
+           <Griddle components={{Layout: NewLayout, Filter }} data={this.state.group} plugins={[plugins.LocalPlugin]}>
+          <RowDefinition>
        <ColumnDefinition id="logo" title="Logo" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) =>{
          return <img   className="logo_grupos" src={'https://cidpullzonestorage.b-cdn.net/steammakers/grupo/'+rowData.id+'/logo.png'} />;
           })} />
@@ -131,8 +137,10 @@ class Group extends Component {
       <ColumnDefinition id="ver" title="Ver grupo" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) =>{
          return <Button className="ver_table" name={rowData.id} onMouseOver={this.tooltip.bind(this,'ver')} onChange={this.handleChange.bind(this)} onClick={this.handleChange.bind(this)} ></Button>;
           })} />
-    </RowDefinition>
-  </Griddle>
+         </RowDefinition>
+        </Griddle>
+        )}
+ 
    </Col>
    <ChallengeCon>
                {context => {

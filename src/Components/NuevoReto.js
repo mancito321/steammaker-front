@@ -48,6 +48,11 @@ class NuevoReto extends Component {
         return true
       }
   }
+  validateReto() {
+      if (this.state.RecursoName.length > 0 && this.state.RecursoText.length > 0 && this.state.RecursoURL.length > 0){
+        return true
+      }
+  }
 
   handleChange(event) {
     this.setState({
@@ -238,7 +243,7 @@ class NuevoReto extends Component {
                               </Row>
                               <Row>
                                 <Col md="2" xs='12' className="">
-                                  <Button className="ingresar_recurso submit_login" disabled={!this.validateParticipante()} onClick={this.add_recurso.bind(this)} >Guardar</Button>
+                                  <Button className="ingresar_recurso submit_login" disabled={!this.validateReto()} onClick={this.add_recurso.bind(this)} >Guardar</Button>
                                 </Col>
                               </Row>
 
@@ -311,9 +316,7 @@ class NuevoReto extends Component {
       }
     }
 
-    validateParticipante=(e)=>{
-      return true
-    }
+   
     ie() {
       this.setState(this.state)
     }
