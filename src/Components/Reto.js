@@ -255,17 +255,20 @@ class Reto extends Component {
          <Col md="12">
          <h4 className="subtitulo">Desarrollos presentados</h4>
           <p>
+          {this.state.develop.length == 0 ? (
+                  <h6>Aún no hay desarrollos cargados</h6>
 
-     <Griddle components={{Layout: NewLayout}} data={this.state.develop} plugins={[plugins.LocalPlugin]}>
-    <RowDefinition>
-      <ColumnDefinition id="gname" title="Nombre" />
-      <ColumnDefinition id="uname" title="Master Teacher" />
-      <ColumnDefinition id="ca" title="Fecha" />
-      <ColumnDefinition id="reto" title="Ver grupo" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) => {  return <Button onClick={this.handleButton.bind(this)} className="ver_table" id="1" name={rowData.id}></Button>;})} />
-      <ColumnDefinition id="desarrollo" title="Ver desarrollo" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) => {  return <Button onClick={this.handleButton.bind(this)} className="ver_table" name={[rowData.id,rowData.chid,rowData.punctuation]} id="2"></Button>;})} />
-    </RowDefinition>
-  </Griddle>
-
+                  ) : (
+                    <Griddle components={{Layout: NewLayout}} data={this.state.develop} plugins={[plugins.LocalPlugin]}>
+                   <RowDefinition>
+                     <ColumnDefinition id="gname" title="Nombre" />
+                     <ColumnDefinition id="uname" title="Master Teacher" />
+                     <ColumnDefinition id="ca" title="Fecha" />
+                     <ColumnDefinition id="reto" title="Ver grupo" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) => {  return <Button onClick={this.handleButton.bind(this)} className="ver_table" id="1" name={rowData.id}></Button>;})} />
+                     <ColumnDefinition id="desarrollo" title="Ver desarrollo" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) => {  return <Button onClick={this.handleButton.bind(this)} className="ver_table" name={[rowData.id,rowData.chid,rowData.punctuation]} id="2"></Button>;})} />
+                   </RowDefinition>
+                 </Griddle>
+                  )}
           </p>
          </Col>
           <Col md="12" className="margin_container" ><Button className="submit_login" onClick={this.props.handler}>Regresar a la pagina anterior</Button></Col>

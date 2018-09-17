@@ -63,12 +63,12 @@ class Challenge extends Component {
     }else {
       try{
         return (
-     <Row  className="margin_container retangle_cont"> 
+     <Row  className="margin_container retangle_cont">
        <Col md="12">
          <p><h5 className="retoInfoTitle" >{this.state.challenge[0].name}</h5></p>
           <p>{this.state.challenge[0].contenido}</p>
           <hr></hr>
-       </Col>  
+       </Col>
      <Col md="3" xs="12">
             <h5 className="retoInfoTitle" >Documentos</h5>
             <Documents key="document" id={this.state.challenge[0].id}/>
@@ -77,22 +77,23 @@ class Challenge extends Component {
             <h5 className="retoInfoTitle" >Desarrollos</h5>
              <Develops key="develops" id={this.state.challenge[0].id}/>
         </Col>
-         <Col md="3" xs="12">         
-        
+         <Col md="3" xs="12">
+
           <h5 className="retoInfoTitle" >Fecha de publicación</h5>
 
-        <p>{this.state.challenge[0].ca}</p>
-             
-        </Col> 
-        <Col md="3" xs="12">         
-        
+        <p>{ new Date(this.state.challenge[0].ca).getDate()+'/'+new Date(this.state.challenge[0].ca).getMonth()+'/'+new Date(this.state.challenge[0].ca).getFullYear()}</p>
+
+        </Col>
+        <Col md="3" xs="12">
+
          <h5 className="retoInfoTitle" >Finalizado</h5>
 
-          <p>{this.state.challenge[0].fn}</p>
-             
+
+          <p>{this.state.challenge[0].fn === '0000-00-00' ? '- -' : new Date(this.state.challenge[0].fn).getDate()+'/'+(new Date(this.state.challenge[0].fn).getMonth()+1)+'/'+new Date(this.state.challenge[0].fn).getFullYear() }</p>
+
         </Col>
-            
-           
+
+
       </Row>
       );
       }catch(error){

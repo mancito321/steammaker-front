@@ -57,29 +57,32 @@ class NuevoReto extends Component {
   handleCheckbox(){
     this.setState({
       activo:!this.state.activo
+    },()=>{
+      if(this.state.activo == true){
+        this.setState({
+       active:1
+     });
+     }else{
+     this.setState({
+       active:0
+     });
+     }
     });
-     if(this.state.activo == true){
-       this.setState({
-      active:1
-    });
-    }else{
-    this.setState({
-      active:0
-    });
-    }
+
   }
 
   handleSubmit = event => {
     let formData = new FormData();
-    console.log(formData);
+    console.log(this.state.active);
     formData.append('NameReto', this.state.NameReto);
     formData.append('TextReto', this.state.TextReto);
     formData.append('Reto', this.state.Reto);
     formData.append('Rubrica', this.state.Rubrica);
     formData.append('Formato', this.state.Formato);
-    formData.append('activo', this.state.activo);
+    formData.append('activo', this.state.active);
     formData.append('recursos', this.state.recursos);
     let session=JSON.parse(sessionStorage.getItem('mySteamM'))
+    console.log('Creando nueva'+formData);
     const config = {
         headers: {
             'content-type': 'multipart/form-data',
@@ -87,16 +90,19 @@ class NuevoReto extends Component {
         }
     }
     console.log(config);
+    console.log();
     axios.post(apiTesxt+'/api/auth/newreto', formData,config)
     .then( (response) =>{
+      console.log('this is the response');
       console.log(response);
       this.setState({ successM: true });
       setTimeout(()=>{ window.location.href ="/retos" }, 2000);
     })
     .catch(function (error) {
+      console.log('this is error');
       this.setState({ failM: true });
     });
-    window.location.replace("/retos");
+
     event.preventDefault();
   }
   handleDropFile=(e)=> {
