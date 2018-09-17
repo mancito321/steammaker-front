@@ -32,6 +32,7 @@ class NuevoGrupo extends Component {
       nameVal:false,
       nameVal2:false,
       successM:false,
+      passVal:false,
       tooltipOpen: false,
       failM:false,
       error: false
@@ -45,7 +46,7 @@ class NuevoGrupo extends Component {
     });
   }
   validateForm() {
-    if (this.state.franchise>0 && this.state.institutions.length>0 && this.state.name.length>0 && this.state.participantes.length>0  && this.state.usuario.length>0 && this.state.password.length>0 && (this.state.repassword === this.state.password) && this.state.fotog !=null) {
+    if (this.state.franchise>0 && this.state.institutions.length>0 && this.state.name.length>0 && this.state.participantes.length>0  && this.state.usuario.length>0 && this.state.password.length>0 && (this.state.repassword === this.state.password) && this.state.fotog !=null && this.state.password.length>5) {
       return true
     }else{
       return false
@@ -65,10 +66,11 @@ class NuevoGrupo extends Component {
 
 
   handleChange (event){
-     this.setState({
+    this.setState({
       [event.target.id]: event.target.value
     },()=>{
-      if(this.state.repassword === this.state.password){     
+   
+    if(this.state.repassword === this.state.password){     
     this.setState({
      error: false
     });
@@ -77,27 +79,16 @@ class NuevoGrupo extends Component {
       error: true
      });
     }
-     if(this.state.error_name >0){
+      if(this.state.password.length<6){
       this.setState({
-        nameVal: true
+        passVal: true
       });
      }else{
-      this.setState({
-        nameVal: false
+       this.setState({
+        passVal: false
       });
-     }
-     if(this.state.error_name_2 >0){
-      this.setState({
-        nameVal2: true
-      });
-     }else{
-      this.setState({
-        nameVal2: false
-      });
-     }
-    });
-
-    axios.get(apiTesxt+'/group/franchises',{
+     }   
+     axios.get(apiTesxt+'/group/franchises',{
       params:{
         id: this.state.ie
       }
@@ -111,6 +102,7 @@ class NuevoGrupo extends Component {
       // handle error
     })
     .then(()=> {
+
       // always executed
     });
 
@@ -122,35 +114,54 @@ class NuevoGrupo extends Component {
     .then((response)=>  {
       this.setState({
         error_name: response.data[0]['contador']
-      });     
-     console.log(this.state.nameVal)
-
+      }); 
     })
     .catch((error)=>  {
       // handle error
     })
     .then(()=> {
-      // always executed
+      if(this.state.error_name >0){
+      this.setState({
+        nameVal: true
+      });
+     }else{
+      this.setState({
+        nameVal: false
+      });
+     }
     }); 
 
      axios.get(apiTesxt+'/group/busyUser',{
       params:{      
-        valor: this.state.name
+        valor: this.state.usuario
       }
     })
     .then((response)=>  {
+      console.log('usuario compare')
+      console.log(this.state.usuario)
       this.setState({
         error_name_2: response.data[0]['contador']
-      });     
-     console.log(this.state.nameVal2)
-
+      }); 
     })
     .catch((error)=>  {
       // handle error
     })
     .then(()=> {
+
+ if(this.state.error_name_2 > 0){
+      this.setState({
+        nameVal2: true
+      });
+     }else{
+      this.setState({
+        nameVal2: false
+      });
+     }
       // always executed
     });
+    });
+     
+    
 
 
 
@@ -416,7 +427,9 @@ class NuevoGrupo extends Component {
                                 <FormGroup id="password">
                                   <Label>Clave de grupo *</Label>
                                   <Input  type="password" id="password" value={this.state.password} onChange={this.handleChange.bind(this)} />
-                                
+                                  <Alert color="danger" isOpen={this.state.passVal}>
+                                    La contraseña tiene que tener minimo 6 caracteres
+                                  </Alert>   
                                 </FormGroup>
                               </Col>
                               <Col md="3" xs="12">

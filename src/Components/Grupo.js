@@ -191,18 +191,24 @@ class Grupo extends Component {
          </Col>
          <Col md="12" className="line ">
          <h4 className="subtitulo">RETOS DESARROLLADOS</h4>
-          <p>
-
-     <Griddle components={{Layout: NewLayout}} data={this.state.challenge} plugins={[plugins.LocalPlugin]}>
-    <RowDefinition>
+          <p>  
+     {this.state.challenge.length == 0 ? (       
+        <h6>Aún no hay retos desarrollados</h6>       
+              
+        ) : (
+      <Griddle components={{Layout: NewLayout}} data={this.state.challenge} plugins={[plugins.LocalPlugin]}>
+       <RowDefinition>
       <ColumnDefinition id="name" title="NOMBRE DEL RETO" />
       <ColumnDefinition id="ca" title="FECHA DE PUBLICACIÓN" />
       <ColumnDefinition id="fn" title="FECHA DE FINALIZACIÓN" />
       <ColumnDefinition id="punctuation" title="PUNTAJE GENERAL" />
       <ColumnDefinition id="reto" title="VER RETO" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) => {  return <Button className="ver_table" onClick={this.handleChange.bind(this)}  name={rowData.id}></Button>;})} />
       <ColumnDefinition id="desarrollo" title="DESARROLLO" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) => {  return <Button onClick={this.handleClick.bind(this)} className="ver_table"  name={rowData.id} id="1"></Button>;})} />
-    </RowDefinition>
-  </Griddle>
+      </RowDefinition>
+     </Griddle>
+        )}        
+
+     
 
           </p>
          </Col>

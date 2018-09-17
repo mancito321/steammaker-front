@@ -154,14 +154,14 @@ class Challenge extends Component {
         
           <h5 className="retoInfoTitle" >Fecha de publicación</h5>
 
-        <p>{this.state.challenge[0].ca}</p>
+        <p>{new Date(this.state.challenge[0].ca).getDate()}/{new Date(this.state.challenge[0].ca).getMonth()+1}/{new Date(this.state.challenge[0].ca).getFullYear()}</p>
              
         </Col> 
         <Col md="3" xs="12">         
         
          <h5 className="retoInfoTitle" >Finalizado</h5>
 
-          <p>{this.state.challenge[0].fn}</p>
+          <p>{this.state.challenge[0].fn === '0000-00-00' ? '- -' : new Date(this.state.challenge[0].fn).getDate()+'/'+(new Date(this.state.challenge[0].fn).getMonth()+1)+'/'+new Date(this.state.challenge[0].fn).getFullYear() }</p>
              
         </Col>
             
@@ -169,12 +169,11 @@ class Challenge extends Component {
       </Row>
       <Row>
      <Col md="12" className="line">  <h2 className="titulo">Ranking</h2><h4 className="subtitulo">Observa a continuación los puntajes y las posiciones de los grupos</h4></Col>
-     <Col md="12" >   {this.state.group.length == 0 ? (
+     <Col md="12" >{this.state.group.length == 0 ? (
         <div>
         <h6>Aún no hay grupos, ¿Qué tal si creas uno?</h6>
         <p><Link to="/nuevo_grupo" ><Button className="submit_login_2">Crear un grupo</Button></Link></p>
-        </div>
-        
+        </div>        
         ) : (
         <BarChart width={1000} height={300} data={this.state.group} margin={{top: 5, right: 30, left: 20, bottom: 5}}>
        <CartesianGrid strokeDasharray="3 3"/>

@@ -149,12 +149,16 @@ class Retos extends Component {
     let GridFixMt=(<Griddle components={{Layout: NewLayout, Filter}} data={this.state.retos} plugins={[plugins.LocalPlugin]}>
    <RowDefinition>
      <ColumnDefinition id="name" title="Nombre" />
-     <ColumnDefinition id="ca" title="Inicio" />
-     <ColumnDefinition id="fn" title="Finalizado" />
+      <ColumnDefinition id="date" title="Inicio" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) =>{
+        return <span>{new Date(rowData.ca).getDate()}/{new Date(rowData.ca).getMonth()+1}/{new Date(rowData.ca).getFullYear()}</span>;
+     })} />
+     <ColumnDefinition id="fn" title="Finalizado" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) =>{
+        return <span>{rowData.fn === '0000-00-00' ? '- -' : new Date(rowData.fn).getDate()+'/'+(new Date(rowData.fn).getMonth()+1)+'/'+new Date(rowData.fn).getFullYear() }</span>;
+     })} />
      <ColumnDefinition id="desarrollos" title="Desarrollado" />
      <ColumnDefinition id="verRe" title="Ver reto" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) =>{
         return <Button name={rowData.id} className="ver_table" onChange={this.handleChange.bind(this)} onClick={this.handleChange.bind(this)} ></Button>;
-         })} />
+    })} />
          <ColumnDefinition id="ver" title="Opciones" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) =>{
           return <div>{rowData.active == 0 ? (<input type="checkbox" name={rowData.id} onClick={this.toggle.bind(this)} />) : (<input type="checkbox"  checked  name={rowData.id} onClick={this.toggle1.bind(this)}/>) }</div>;
            })} />
@@ -165,8 +169,12 @@ class Retos extends Component {
  let GridFixSt=(<Griddle components={{Layout: NewLayout, Filter}} data={this.state.retos}  plugins={[plugins.LocalPlugin]}>
 <RowDefinition>
   <ColumnDefinition id="name" title="Nombre" />
-  <ColumnDefinition id="ca" title="Inicio" />
-  <ColumnDefinition id="fn" title="Finalizado" />
+  <ColumnDefinition id="date" title="Inicio" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) =>{
+        return <span>{new Date(rowData.ca).getDate()}/{new Date(rowData.ca).getMonth()+1}/{new Date(rowData.ca).getFullYear()}</span>;
+     })} />
+     <ColumnDefinition id="fn" title="Finalizado" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) =>{
+        return <span>{rowData.fn === '0000-00-00' ? '- -' : new Date(rowData.fn).getDate()+'/'+(new Date(rowData.fn).getMonth()+1)+'/'+new Date(rowData.fn).getFullYear() }</span>;
+     })} />
   <ColumnDefinition id="desarrollos" title="Desarrollado" />
   <ColumnDefinition id="verRe" title="Ver reto" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) =>{
      return <Button name={rowData.id} className="ver_table" onChange={this.handleChange.bind(this)} onClick={this.handleChange.bind(this)} ></Button>;
