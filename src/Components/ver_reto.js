@@ -46,6 +46,7 @@ class Retos extends Component {
     this.state = {
       session:sessionchk,
       retos : [],
+      retosA : [],
       modal: false,
       edit : [],
       active : false,
@@ -61,6 +62,21 @@ class Retos extends Component {
    .then((response)=>  {
       this.setState({
        retos: response.data
+      });
+      console.log(this.state.retos);
+    })
+    .catch((error)=>  {
+    // handle error
+     })
+     .then(()=> {
+      console.log(this.state.retos)
+    // always executed
+     });
+
+      axios.get(apiTesxt+'/challenge/challengesAdmin')
+   .then((response)=>  {
+      this.setState({
+       retosA: response.data
       });
       console.log(this.state.retos);
     })
@@ -146,7 +162,7 @@ class Retos extends Component {
 
   render() {
 
-    let GridFixMt=(<Griddle components={{Layout: NewLayout, Filter}} data={this.state.retos} plugins={[plugins.LocalPlugin]}>
+    let GridFixMt=(<Griddle components={{Layout: NewLayout, Filter}} data={this.state.retosA} plugins={[plugins.LocalPlugin]}>
    <RowDefinition>
      <ColumnDefinition id="name" title="Nombre" />
       <ColumnDefinition id="date" title="Inicio" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) =>{

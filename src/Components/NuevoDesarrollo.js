@@ -201,8 +201,8 @@ componentWillMount(){
                   <Container className="Contenido_general">
                     <Row>
                       <Col md="12">
-                        <h2 className="titulo">RETOS</h2>
-                        <small>Detalle del reto</small>
+                        <h2 className="titulo">Desarrollo del reto</h2>
+                        <small>Carga el desarrollo del reto</small>
                       </Col>
                       <Row className="margin_container">
                         <Container>
@@ -217,8 +217,8 @@ componentWillMount(){
                               <hr></hr>                           
                             </Col>
                             <Col md="4" xs="12">
-                             <h4>Fecha</h4>
-                              <p>{this.state.challenge.ca}</p></Col>
+                             <h4>Fecha de creación</h4>
+                              <p>{new Date(this.state.challenge.ca).getDate()}/{new Date(this.state.challenge.ca).getMonth()+1}/{new Date(this.state.challenge.ca).getFullYear()}</p></Col>
                             <Col md="4" xs="12">
                               <h4>
                                 Documentos
@@ -273,7 +273,8 @@ componentWillMount(){
                           </Container>
                           <Container className="form_margin">
                             <Row>
-                              <Col md="12"><h5>Contenidos de apoyo</h5><hr></hr></Col>
+                              <Col md="12"><h5>Contenidos de apoyo</h5></Col>
+                              <Col md="12"><small>Carga aquí los contenidos y recursos asociados al reto, puedes elegir entre cargar archivos y enlaces; utiliza la opción archivos para cargar imágenes y documentos, y la opción enlaces para vincular videos y audios de páginas como youtube y soundcloud. Recuerda que el tamaño máximo para cargar archivos es de 5mb.</small><hr></hr></Col>
                             </Row>
                             <Row>
                               <Col xs="12" md="6">

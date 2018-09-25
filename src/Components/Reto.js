@@ -10,6 +10,7 @@ import Documents from './Documents'
 import Develops from './Develops'
 import Challenge from './ChallengeGroup'
 import Desarrollo from './DesarrolloGrupo'
+import DesarrolloUser from './DesarrolloUser'
 import NuevoDesarrollo from './NuevoDesarrollo'
 import Grupos from './Grupo'
 import {apiTesxt} from './apiConf'
@@ -238,11 +239,45 @@ class Reto extends Component {
           </Row>
          </Col>
          <Col xs="12">
-           <ChallengeCon>
+       
+
+         </Col>
+         <Col md="12">
+        
+          <p>
+             <ChallengeCon>
+             {context => {
+                if (context.state==1) {
+                  return(
+                 <div>  <h4 className="subtitulo">Desarrollos presentados</h4> {this.state.develop.length == 0 ? (
+                 
+                   <div> <h6>Aún no hay desarrollos cargados</h6>
+                   
+                   </div>
+                  ) : (
+                 <Griddle components={{Layout: NewLayout}} data={this.state.develop} plugins={[plugins.LocalPlugin]}>
+                   <RowDefinition>
+                     <ColumnDefinition id="gname" title="Nombre" />
+                     <ColumnDefinition id="uname" title="Master Teacher" />
+                     <ColumnDefinition id="date" title="Fecha" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) =>{
+        return <span>{new Date(rowData.ca).getDate()}/{new Date(rowData.ca).getMonth()+1}/{new Date(rowData.ca).getFullYear()}</span>;
+     })} />
+                     <ColumnDefinition id="reto" title="Ver grupo" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) => {  return <Button onClick={this.handleButton.bind(this)} className="ver_table" id="1" name={rowData.id}></Button>;})} />
+                     <ColumnDefinition id="desarrollo" title="Ver desarrollo" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) => {  return <Button onClick={this.handleButton.bind(this)} className="ver_table" name={[rowData.id,rowData.chid,rowData.punctuation]} id="2"></Button>;})} />
+                   </RowDefinition>
+                 </Griddle>
+               )}</div>
+                  )
+                }else {
+                  return(
+                 <div>  
+
+                 <DesarrolloUser id={this.props.id} group={context.grupo} />
+  <ChallengeCon>
              {context => {
                 if (context.state==2) {
                   return(
-                        <Button onClick={this.handleDeve}   className="submit_login" disabled={this.state.boton} >Desarrollo</Button>
+                        <Button onClick={this.handleDeve}   className="submit_login" disabled={this.state.boton} >Cargar desarrollo</Button>
                   )
                 }else {
                   return(<div></div>)
@@ -250,28 +285,16 @@ class Reto extends Component {
 
             }}
            </ChallengeCon>
+                 </div>
+                    )
+                }
 
-         </Col>
-         <Col md="12">
-         <h4 className="subtitulo">Desarrollos presentados</h4>
-          <p>
-          {this.state.develop.length == 0 ? (
-                  <h6>Aún no hay desarrollos cargados</h6>
-
-                  ) : (
-                    <Griddle components={{Layout: NewLayout}} data={this.state.develop} plugins={[plugins.LocalPlugin]}>
-                   <RowDefinition>
-                     <ColumnDefinition id="gname" title="Nombre" />
-                     <ColumnDefinition id="uname" title="Master Teacher" />
-                     <ColumnDefinition id="ca" title="Fecha" />
-                     <ColumnDefinition id="reto" title="Ver grupo" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) => {  return <Button onClick={this.handleButton.bind(this)} className="ver_table" id="1" name={rowData.id}></Button>;})} />
-                     <ColumnDefinition id="desarrollo" title="Ver desarrollo" customComponent={enhancedWithRowData(({ value, griddleKey, rowData }) => {  return <Button onClick={this.handleButton.bind(this)} className="ver_table" name={[rowData.id,rowData.chid,rowData.punctuation]} id="2"></Button>;})} />
-                   </RowDefinition>
-                 </Griddle>
-                  )}
+            }}
+           </ChallengeCon>
+        
           </p>
          </Col>
-          <Col md="12" className="margin_container" ><Button className="submit_login" onClick={this.props.handler}>Regresar a la pagina anterior</Button></Col>
+        
       </Row>
 
       </Row>

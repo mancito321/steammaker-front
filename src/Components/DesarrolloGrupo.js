@@ -220,7 +220,7 @@ handleButtonChange(event){
        
         <Col md="6">
         <h5 className="retoInfoTitle">Fecha de publicación</h5>
-        <p>{this.state.challenge[0].ca}</p>
+        <p>{new Date(this.state.challenge[0].ca).getDate()}/{new Date(this.state.challenge[0].ca).getMonth()+1}/{new Date(this.state.challenge[0].ca).getFullYear()}</p>
         </Col>
         <Col md="6">
         <h5 className="retoInfoTitle">{this.state.challenge[0].name}</h5>
@@ -230,6 +230,7 @@ handleButtonChange(event){
         <Button   className="submit_login_2" onClick={this.modalSol.bind(this)}>Ver Desarrollo</Button>
         <hr></hr>
       </Col>  
+
 
         <ChallengeCon>
           {context => {
@@ -302,7 +303,6 @@ handleButtonChange(event){
         <Col md="12" className="margin_container form_margin "></Col>
 
       </Row>
-
       </Container>
       </Col>
       </Row>

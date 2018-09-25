@@ -59,14 +59,14 @@ class Challenge extends Component {
         
           <h5 className="retoInfoTitle" >Fecha de publicación</h5>
 
-        <p>{this.state.challenge[0].ca}</p>
+        <p>{new Date(this.state.challenge[0].ca).getDate()}/{new Date(this.state.challenge[0].ca).getMonth()+1}/{new Date(this.state.challenge[0].ca).getFullYear()}</p>
              
         </Col> 
         <Col md="3" xs="12">         
         
          <h5 className="retoInfoTitle" >Finalizado</h5>
 
-          <p>{this.state.challenge[0].fn}</p>
+          <p>{this.state.challenge[0].fn === '0000-00-00' ? '- -' : new Date(this.state.challenge[0].fn).getDate()+'/'+(new Date(this.state.challenge[0].fn).getMonth()+1)+'/'+new Date(this.state.challenge[0].fn).getFullYear() }</p>
              
         </Col>
             
