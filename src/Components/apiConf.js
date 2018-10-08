@@ -1,1 +1,1 @@
-export const apiTesxt = 'http://192.168.1.78:5000';
+export const apiTesxt = 'http://api-sm.cid.edu.co';

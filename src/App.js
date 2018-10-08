@@ -53,46 +53,13 @@ class App extends Component {
          });
   }
   }
-  componentWillMount(){
-    console.log('Willmount');
-    console.log('will mount on app');
-    let session=JSON.parse(sessionStorage.getItem('mySteamM'))
-    if (session!=null && this.state.permission==0) {
-      this.setState({
-        onAction:1
-      })
-      console.log('entra ??');
-          axios.get(apiTesxt+'/api/auth/me',{
-            headers: {
-                'content-type': 'multipart/form-data',
-                'x-access-token':session.token
-            }
-        })
-         .then((response)=>  {
-           console.log('responses: '+response);
-          this.setState({
-              permission:response.data.rol,
-              grupo:response.data.group,
-              onAction:0
-            })
-          })
-          .catch((error)=>  {
-          // handle error
-          console.log('Fuck '+error);
-           })
-           .then(()=> {
-             console.log('no no no');
-          console.log(this.state.permission);
-           });
-    }
-    console.log('termina component mount');
-  }
+  
   componentDidUpdate(){
     console.log('Did update');
   }
   componentWillUpdate(){
     console.log('will update');
-    
+
   }
 
   render() {

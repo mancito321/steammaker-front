@@ -217,7 +217,7 @@ handleButtonChange(event){
        </Col>
        <Col md="12"><h4 className="subtitulo">INFORMACIÓN DEL DESARROLLO</h4></Col>
        <Row  className="margin_container retangle_cont reactangle">
-       
+
         <Col md="6">
         <h5 className="retoInfoTitle">Fecha de publicación</h5>
         <p>{new Date(this.state.challenge[0].ca).getDate()}/{new Date(this.state.challenge[0].ca).getMonth()+1}/{new Date(this.state.challenge[0].ca).getFullYear()}</p>
@@ -226,10 +226,28 @@ handleButtonChange(event){
         <h5 className="retoInfoTitle">{this.state.challenge[0].name}</h5>
         <Button   className="submit_login_2" onClick={this.toggle}>Ver reto</Button>
         </Col>
-        <Col md="12">  <h5 className="retoInfoTitle">Ver desarrollo</h5>
-        <Button   className="submit_login_2" onClick={this.modalSol.bind(this)}>Ver Desarrollo</Button>
-        <hr></hr>
-      </Col>  
+
+        <ChallengeCon>
+          {
+            context => {
+              if (context.state == 1) {
+
+                return (
+                  <Col md="12">
+
+                  <h5 className="retoInfoTitle">Ver desarrollo</h5>
+                  <Button   className="submit_login_2" onClick={this.modalSol.bind(this)}>Ver Desarrollo</Button>
+                    <hr></hr>
+                  </Col>
+                )
+              }else {
+                return <hr></hr>
+              }
+            }
+          }
+        </ChallengeCon>
+
+
 
 
         <ChallengeCon>

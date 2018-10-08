@@ -69,12 +69,12 @@ class NuevoGrupo extends Component {
     this.setState({
       [event.target.id]: event.target.value
     },()=>{
-   
-    if(this.state.repassword === this.state.password){     
+
+    if(this.state.repassword === this.state.password){
     this.setState({
      error: false
     });
-    }else{    
+    }else{
      this.setState({
       error: true
      });
@@ -87,7 +87,7 @@ class NuevoGrupo extends Component {
        this.setState({
         passVal: false
       });
-     }   
+     }
      axios.get(apiTesxt+'/group/franchises',{
       params:{
         id: this.state.ie
@@ -107,14 +107,14 @@ class NuevoGrupo extends Component {
     });
 
      axios.get(apiTesxt+'/group/busy',{
-      params:{      
+      params:{
         valor: this.state.name
       }
     })
     .then((response)=>  {
       this.setState({
         error_name: response.data[0]['contador']
-      }); 
+      });
     })
     .catch((error)=>  {
       // handle error
@@ -129,10 +129,10 @@ class NuevoGrupo extends Component {
         nameVal: false
       });
      }
-    }); 
+    });
 
      axios.get(apiTesxt+'/group/busyUser',{
-      params:{      
+      params:{
         valor: this.state.usuario
       }
     })
@@ -141,7 +141,7 @@ class NuevoGrupo extends Component {
       console.log(this.state.usuario)
       this.setState({
         error_name_2: response.data[0]['contador']
-      }); 
+      });
     })
     .catch((error)=>  {
       // handle error
@@ -160,8 +160,8 @@ class NuevoGrupo extends Component {
       // always executed
     });
     });
-     
-    
+
+
 
 
 
@@ -191,17 +191,6 @@ class NuevoGrupo extends Component {
  }
 
   handleSubmit = event => {
-    console.log({
-      user: this.state.usuario,
-      ie: this.state.text,
-      franchise:this.state.franchise,
-      name: this.state.name,
-      usuario: this.state.usuario,
-      password: this.state.password,
-      participantes:this.state.participantes,
-      imagen: this.state.fotog,
-      logo:this.state.logog,
-    });
     let formData = new FormData();
     formData.append('user', this.state.usuario);
     formData.append('ie', this.state.text);
@@ -238,12 +227,12 @@ class NuevoGrupo extends Component {
         logog:null,
       });
       this.setState({ successM: true });
+      setTimeout(function(){ window.location.replace("/grupos"); }, 3000);
     })
     .catch(function (error) {
       console.log(error);
       this.setState({ failM: true });
     });
-    window.location.replace("/grupos");
     event.preventDefault();
   }
 
@@ -330,7 +319,7 @@ class NuevoGrupo extends Component {
                                     }
                                   </Input>
                                 </FormGroup>
-                              </Col>                            
+                              </Col>
                             </Row>
                             <Row>
                               <Col md="3" xs="12">
@@ -341,7 +330,7 @@ class NuevoGrupo extends Component {
                                     El nombre del grupo ya existe!
                                   </Alert>
                                 </FormGroup>
-                              </Col>                              
+                              </Col>
                             </Row>
                           </Container>
                           <Container className="form_margin">
@@ -390,7 +379,7 @@ class NuevoGrupo extends Component {
                                   </FormText>
                                   <Input type="file" accept="image/*" name="fotog" id="Fotog" onChange={this.handleDropFile}/>
                                 </FormGroup>
-                              </Col> 
+                              </Col>
 
                               <Col md="4" xs="7">
                                 <FormGroup id="logog">
@@ -403,9 +392,9 @@ class NuevoGrupo extends Component {
                                   </FormText>
                                   <Input type="file" accept="image/*" name="logog" id="Logog" onChange={this.handleDropFile}/>
                                 </FormGroup>
-                              </Col> 
+                              </Col>
 
-                            </Row>                            
+                            </Row>
                           </Container>
                           <Container className="form_margin">
                             <Row>
@@ -415,7 +404,7 @@ class NuevoGrupo extends Component {
                               <Col md="3" xs="12">
                                 <FormGroup id="user">
                                   <Label>Usuario de grupo *</Label>
-                                  <Input  type="text"  id="usuario" onChange={this.handleChange.bind(this)} />                             
+                                  <Input  type="text"  id="usuario" onChange={this.handleChange.bind(this)} />
                                   <Alert color="danger" isOpen={this.state.nameVal2}>
                                     El usuario del grupo ya existe!
                                   </Alert>
@@ -429,16 +418,16 @@ class NuevoGrupo extends Component {
                                   <Input  type="password" id="password" value={this.state.password} onChange={this.handleChange.bind(this)} />
                                   <Alert color="danger" isOpen={this.state.passVal}>
                                     La contraseña tiene que tener minimo 6 caracteres
-                                  </Alert>   
+                                  </Alert>
                                 </FormGroup>
                               </Col>
                               <Col md="3" xs="12">
                                 <FormGroup id="password">
                                   <Label>Confirmar clave de grupo *</Label>
-                                  <Input  type="password" id="repassword" value={this.state.Repassword} onChange={this.handleChange.bind(this)} />                                 
+                                  <Input  type="password" id="repassword" value={this.state.Repassword} onChange={this.handleChange.bind(this)} />
                                    <Alert color="danger" isOpen={this.state.error}>
                                     Las contraseñas no coiciden!
-                                  </Alert>                               
+                                  </Alert>
                                 </FormGroup>
                               </Col>
                             </Row>
@@ -446,7 +435,7 @@ class NuevoGrupo extends Component {
                           <Container className="form_margin">
                             <Row className="center">
                               <Col md="2">
-                                <Button className="submit_login_2" block disabled={!this.validateForm()} type="submit" >
+                                <Button className="submit_login_2" block disabled={!this.validateForm()} type="submit" ref="btn">
                                   Crear
                                 </Button>
                               </Col>
@@ -495,7 +484,7 @@ class NuevoGrupo extends Component {
       var array = this.state.participantes;
       var index = array.indexOf(i);
       array.splice(index, 1);
-      // delete array[index];     
+      // delete array[index];
       this.setState(
         this.state
       )
